@@ -1,0 +1,17 @@
+{
+  "name": "sharoom",
+  "main": "app.js",
+  "version": "0.0.0",
+  "authors": [
+    "Alex Clavelle <aclav3113@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
