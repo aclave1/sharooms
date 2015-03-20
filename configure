@@ -1,3 +1,5 @@
-npm install -g sails bower grunt tsc webpack
+npm install -g sails bower grunt typescript webpack
 cd app
+npm install
+bower install
 grunt
