@@ -70,7 +70,7 @@
 	    )
 	  )
 	  .controller('TestController', ['$scope','io', function ($scope,io) {
-	    $scope.test = "Angularjs works";
+	    $scope.test = "KELSEY IS THE BEST";
 	  }])
 	;
 
@@ -348,7 +348,7 @@
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/***
+	var require;var require;/***
 	 *
 	 * Caution!!! There be dragons ahead!!!!!
 	 *
@@ -366,7 +366,7 @@
 	      if (!n[o]) {
 	        if (!t[o]) {
 	          var a = typeof require == "function" && require;
-	          if (!u && a)return a(o, !0);
+	          if (!u && a)return require(o, !0);
 	          if (i)return i(o, !0);
 	          throw new Error("Cannot find module '" + o + "'")
 	        }
@@ -4215,7 +4215,7 @@
 	  // that will be sent along w/ the initial connection request.
 	  var SDK_INFO = {
 	    version: '0.11.0', // TODO: pull this automatically from package.json during build.
-	    platform: typeof module === 'undefined' ? 'browser' : 'node',
+	    platform: false ? 'browser' : 'node',
 	    language: 'javascript'
 	  };
 	  SDK_INFO.versionString =

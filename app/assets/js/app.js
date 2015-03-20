@@ -8,6 +8,6 @@ module.exports = angular
     )
   )
   .controller('TestController', ['$scope','io', function ($scope,io) {
-    $scope.test = "Angularjs works";
+    $scope.test = "KELSEY IS THE BEST";
   }])
 ;
