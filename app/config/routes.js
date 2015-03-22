@@ -34,6 +34,10 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
+  },
+  'post /screen/register':{
+    controller:'ScreenController',
+    action:'register'
   }
 
   /***************************************************************************

@@ -1,0 +1,881 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/al/bin/node',
+1 verbose cli   '/home/al/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'sails',
+1 verbose cli   'bower',
+1 verbose cli   'grunt',
+1 verbose cli   'tsc',
+1 verbose cli   'webpack' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.36
+4 verbose node symlink /home/al/bin/node
+5 verbose cache add [ 'sails', null ]
+6 verbose cache add name=undefined spec="sails" args=["sails",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: 'sails',
+7 verbose parsed url   path: 'sails',
+7 verbose parsed url   href: 'sails' }
+8 verbose cache add [ 'bower', null ]
+9 verbose cache add name=undefined spec="bower" args=["bower",null]
+10 verbose parsed url { protocol: null,
+10 verbose parsed url   slashes: null,
+10 verbose parsed url   auth: null,
+10 verbose parsed url   host: null,
+10 verbose parsed url   port: null,
+10 verbose parsed url   hostname: null,
+10 verbose parsed url   hash: null,
+10 verbose parsed url   search: null,
+10 verbose parsed url   query: null,
+10 verbose parsed url   pathname: 'bower',
+10 verbose parsed url   path: 'bower',
+10 verbose parsed url   href: 'bower' }
+11 verbose cache add [ 'grunt', null ]
+12 verbose cache add name=undefined spec="grunt" args=["grunt",null]
+13 verbose parsed url { protocol: null,
+13 verbose parsed url   slashes: null,
+13 verbose parsed url   auth: null,
+13 verbose parsed url   host: null,
+13 verbose parsed url   port: null,
+13 verbose parsed url   hostname: null,
+13 verbose parsed url   hash: null,
+13 verbose parsed url   search: null,
+13 verbose parsed url   query: null,
+13 verbose parsed url   pathname: 'grunt',
+13 verbose parsed url   path: 'grunt',
+13 verbose parsed url   href: 'grunt' }
+14 verbose cache add [ 'tsc', null ]
+15 verbose cache add name=undefined spec="tsc" args=["tsc",null]
+16 verbose parsed url { protocol: null,
+16 verbose parsed url   slashes: null,
+16 verbose parsed url   auth: null,
+16 verbose parsed url   host: null,
+16 verbose parsed url   port: null,
+16 verbose parsed url   hostname: null,
+16 verbose parsed url   hash: null,
+16 verbose parsed url   search: null,
+16 verbose parsed url   query: null,
+16 verbose parsed url   pathname: 'tsc',
+16 verbose parsed url   path: 'tsc',
+16 verbose parsed url   href: 'tsc' }
+17 verbose cache add [ 'webpack', null ]
+18 verbose cache add name=undefined spec="webpack" args=["webpack",null]
+19 verbose parsed url { protocol: null,
+19 verbose parsed url   slashes: null,
+19 verbose parsed url   auth: null,
+19 verbose parsed url   host: null,
+19 verbose parsed url   port: null,
+19 verbose parsed url   hostname: null,
+19 verbose parsed url   hash: null,
+19 verbose parsed url   search: null,
+19 verbose parsed url   query: null,
+19 verbose parsed url   pathname: 'webpack',
+19 verbose parsed url   path: 'webpack',
+19 verbose parsed url   href: 'webpack' }
+20 silly lockFile e20e6cdc-sails sails
+21 verbose lock sails /home/al/.npm/e20e6cdc-sails.lock
+22 silly lockFile 206e3ce5-bower bower
+23 verbose lock bower /home/al/.npm/206e3ce5-bower.lock
+24 silly lockFile 20ff3fd8-grunt grunt
+25 verbose lock grunt /home/al/.npm/20ff3fd8-grunt.lock
+26 silly lockFile 50979f87-tsc tsc
+27 verbose lock tsc /home/al/.npm/50979f87-tsc.lock
+28 silly lockFile 057b6197-webpack webpack
+29 verbose lock webpack /home/al/.npm/057b6197-webpack.lock
+30 silly lockFile e20e6cdc-sails sails
+31 silly lockFile e20e6cdc-sails sails
+32 silly lockFile 206e3ce5-bower bower
+33 silly lockFile 206e3ce5-bower bower
+34 silly lockFile 20ff3fd8-grunt grunt
+35 silly lockFile 20ff3fd8-grunt grunt
+36 silly lockFile 50979f87-tsc tsc
+37 silly lockFile 50979f87-tsc tsc
+38 silly lockFile 057b6197-webpack webpack
+39 silly lockFile 057b6197-webpack webpack
+40 verbose addNamed [ 'sails', '' ]
+41 verbose addNamed [ null, '*' ]
+42 silly lockFile 5291d548-sails sails@
+43 verbose lock sails@ /home/al/.npm/5291d548-sails.lock
+44 verbose addNamed [ 'bower', '' ]
+45 verbose addNamed [ null, '*' ]
+46 silly lockFile 1240aab1-bower bower@
+47 verbose lock bower@ /home/al/.npm/1240aab1-bower.lock
+48 verbose addNamed [ 'grunt', '' ]
+49 verbose addNamed [ null, '*' ]
+50 silly lockFile 55f1ff24-grunt grunt@
+51 verbose lock grunt@ /home/al/.npm/55f1ff24-grunt.lock
+52 verbose addNamed [ 'tsc', '' ]
+53 verbose addNamed [ null, '*' ]
+54 silly lockFile 5456f48e-tsc tsc@
+55 verbose lock tsc@ /home/al/.npm/5456f48e-tsc.lock
+56 verbose addNamed [ 'webpack', '' ]
+57 verbose addNamed [ null, '*' ]
+58 silly lockFile 9c8dd08b-webpack webpack@
+59 verbose lock webpack@ /home/al/.npm/9c8dd08b-webpack.lock
+60 silly addNameRange { name: 'sails', range: '*', hasData: false }
+61 silly addNameRange { name: 'bower', range: '*', hasData: false }
+62 silly addNameRange { name: 'grunt', range: '*', hasData: false }
+63 silly addNameRange { name: 'tsc', range: '*', hasData: false }
+64 silly addNameRange { name: 'webpack', range: '*', hasData: false }
+65 verbose request where is /tsc
+66 verbose request registry https://registry.npmjs.org/
+67 verbose request id 072e24b1f4484c6e
+68 verbose url raw /tsc
+69 verbose url resolving [ 'https://registry.npmjs.org/', './tsc' ]
+70 verbose url resolved https://registry.npmjs.org/tsc
+71 verbose request where is https://registry.npmjs.org/tsc
+72 info trying registry request attempt 1 at 19:01:39
+73 http GET https://registry.npmjs.org/tsc
+74 verbose request where is /sails
+75 verbose request registry https://registry.npmjs.org/
+76 verbose url raw /sails
+77 verbose url resolving [ 'https://registry.npmjs.org/', './sails' ]
+78 verbose url resolved https://registry.npmjs.org/sails
+79 verbose request where is https://registry.npmjs.org/sails
+80 info trying registry request attempt 1 at 19:01:39
+81 verbose etag "AJPDELABVJVK1IJRSK20Q3DCK"
+82 http GET https://registry.npmjs.org/sails
+83 verbose request where is /bower
+84 verbose request registry https://registry.npmjs.org/
+85 verbose url raw /bower
+86 verbose url resolving [ 'https://registry.npmjs.org/', './bower' ]
+87 verbose url resolved https://registry.npmjs.org/bower
+88 verbose request where is https://registry.npmjs.org/bower
+89 info trying registry request attempt 1 at 19:01:39
+90 verbose etag "4RNWC51OOMVEKH3L663N286TF"
+91 http GET https://registry.npmjs.org/bower
+92 verbose request where is /grunt
+93 verbose request registry https://registry.npmjs.org/
+94 verbose url raw /grunt
+95 verbose url resolving [ 'https://registry.npmjs.org/', './grunt' ]
+96 verbose url resolved https://registry.npmjs.org/grunt
+97 verbose request where is https://registry.npmjs.org/grunt
+98 info trying registry request attempt 1 at 19:01:39
+99 verbose etag "TX9A3C4S1HIA59DEZ9GNFMOG"
+100 http GET https://registry.npmjs.org/grunt
+101 verbose request where is /webpack
+102 verbose request registry https://registry.npmjs.org/
+103 verbose url raw /webpack
+104 verbose url resolving [ 'https://registry.npmjs.org/', './webpack' ]
+105 verbose url resolved https://registry.npmjs.org/webpack
+106 verbose request where is https://registry.npmjs.org/webpack
+107 info trying registry request attempt 1 at 19:01:39
+108 verbose etag "9O6KI7FCVUM37XJ0JTBQV33JH"
+109 http GET https://registry.npmjs.org/webpack
+110 http 304 https://registry.npmjs.org/sails
+111 silly registry.get cb [ 304,
+111 silly registry.get   { date: 'Fri, 20 Mar 2015 00:01:39 GMT',
+111 silly registry.get     server: 'Apache',
+111 silly registry.get     via: '1.1 varnish',
+111 silly registry.get     'last-modified': 'Fri, 20 Mar 2015 00:01:39 GMT',
+111 silly registry.get     'cache-control': 'max-age=60',
+111 silly registry.get     etag: '"AJPDELABVJVK1IJRSK20Q3DCK"',
+111 silly registry.get     age: '20',
+111 silly registry.get     'x-served-by': 'cache-dfw1824-DFW',
+111 silly registry.get     'x-cache': 'HIT',
+111 silly registry.get     'x-cache-hits': '1',
+111 silly registry.get     'x-timer': 'S1426809699.673195,VS0,VE1',
+111 silly registry.get     vary: 'Accept',
+111 silly registry.get     'content-length': '0',
+111 silly registry.get     'keep-alive': 'timeout=10, max=50',
+111 silly registry.get     connection: 'Keep-Alive' } ]
+112 verbose etag https://registry.npmjs.org/sails from cache
+113 http 304 https://registry.npmjs.org/grunt
+114 silly registry.get cb [ 304,
+114 silly registry.get   { date: 'Fri, 20 Mar 2015 00:01:39 GMT',
+114 silly registry.get     server: 'Apache',
+114 silly registry.get     via: '1.1 varnish',
+114 silly registry.get     'last-modified': 'Fri, 20 Mar 2015 00:01:39 GMT',
+114 silly registry.get     'cache-control': 'max-age=60',
+114 silly registry.get     etag: '"TX9A3C4S1HIA59DEZ9GNFMOG"',
+114 silly registry.get     age: '44',
+114 silly registry.get     'x-served-by': 'cache-dfw1827-DFW',
+114 silly registry.get     'x-cache': 'HIT',
+114 silly registry.get     'x-cache-hits': '1',
+114 silly registry.get     'x-timer': 'S1426809699.675459,VS0,VE0',
+114 silly registry.get     vary: 'Accept',
+114 silly registry.get     'content-length': '0',
+114 silly registry.get     'keep-alive': 'timeout=10, max=50',
+114 silly registry.get     connection: 'Keep-Alive' } ]
+115 verbose etag https://registry.npmjs.org/grunt from cache
+116 silly addNameRange number 2 { name: 'sails', range: '*', hasData: true }
+117 silly addNameRange versions [ 'sails',
+117 silly addNameRange   [ '0.0.0',
+117 silly addNameRange     '0.0.0-2',
+117 silly addNameRange     '0.7.0',
+117 silly addNameRange     '0.7.0-2',
+117 silly addNameRange     '0.7.0-3',
+117 silly addNameRange     '0.7.0-4',
+117 silly addNameRange     '0.7.0-5',
+117 silly addNameRange     '0.0.0-1',
+117 silly addNameRange     '0.7.0-6',
+117 silly addNameRange     '0.7.0-7',
+117 silly addNameRange     '0.7.0-8',
+117 silly addNameRange     '0.7.1',
+117 silly addNameRange     '0.7.2',
+117 silly addNameRange     '0.7.3',
+117 silly addNameRange     '0.7.4',
+117 silly addNameRange     '0.7.4-1',
+117 silly addNameRange     '0.7.5-0',
+117 silly addNameRange     '0.7.6-0',
+117 silly addNameRange     '0.7.7',
+117 silly addNameRange     '0.7.8',
+117 silly addNameRange     '0.7.9',
+117 silly addNameRange     '0.8.0',
+117 silly addNameRange     '0.8.1',
+117 silly addNameRange     '0.8.2',
+117 silly addNameRange     '0.8.3',
+117 silly addNameRange     '0.8.4',
+117 silly addNameRange     '0.8.5',
+117 silly addNameRange     '0.8.6',
+117 silly addNameRange     '0.8.7',
+117 silly addNameRange     '0.8.71',
+117 silly addNameRange     '0.8.72',
+117 silly addNameRange     '0.8.73',
+117 silly addNameRange     '0.8.74',
+117 silly addNameRange     '0.8.75',
+117 silly addNameRange     '0.8.76',
+117 silly addNameRange     '0.8.77',
+117 silly addNameRange     '0.8.78',
+117 silly addNameRange     '0.8.79',
+117 silly addNameRange     '0.8.80',
+117 silly addNameRange     '0.8.81',
+117 silly addNameRange     '0.8.82',
+117 silly addNameRange     '0.8.83',
+117 silly addNameRange     '0.8.84',
+117 silly addNameRange     '0.8.85',
+117 silly addNameRange     '0.8.86',
+117 silly addNameRange     '0.8.87',
+117 silly addNameRange     '0.8.88',
+117 silly addNameRange     '0.8.89',
+117 silly addNameRange     '0.8.89-1',
+117 silly addNameRange     '0.8.892',
+117 silly addNameRange     '0.8.894',
+117 silly addNameRange     '0.8.895',
+117 silly addNameRange     '0.8.9',
+117 silly addNameRange     '0.8.91',
+117 silly addNameRange     '0.8.92',
+117 silly addNameRange     '0.8.93',
+117 silly addNameRange     '0.8.94',
+117 silly addNameRange     '0.9.0',
+117 silly addNameRange     '0.9.1',
+117 silly addNameRange     '0.9.2',
+117 silly addNameRange     '0.9.3',
+117 silly addNameRange     '0.9.4',
+117 silly addNameRange     '0.9.5',
+117 silly addNameRange     '0.9.7',
+117 silly addNameRange     '0.9.8',
+117 silly addNameRange     '0.9.9',
+117 silly addNameRange     '0.10.0-rc1',
+117 silly addNameRange     '0.10.0-rc2',
+117 silly addNameRange     '0.10.0-rc3',
+117 silly addNameRange     '0.9.11',
+117 silly addNameRange     '0.10.0-rc4',
+117 silly addNameRange     '0.9.12',
+117 silly addNameRange     '0.9.13',
+117 silly addNameRange     '0.9.15',
+117 silly addNameRange     '0.9.16',
+117 silly addNameRange     '0.10.0-rc5',
+117 silly addNameRange     '0.10.0-rc6',
+117 silly addNameRange     '0.10.0-rc7',
+117 silly addNameRange     '0.10.0-rc8',
+117 silly addNameRange     '0.9.17',
+117 silly addNameRange     '0.10.0-rc9',
+117 silly addNameRange     '0.10.0-max',
+117 silly addNameRange     '0.10.0-rc10',
+117 silly addNameRange     '0.10.0-rc11',
+117 silly addNameRange     '0.10.1',
+117 silly addNameRange     '0.10.2',
+117 silly addNameRange     '0.10.3',
+117 silly addNameRange     '0.10.4',
+117 silly addNameRange     '0.10.5',
+117 silly addNameRange     '0.11.0-rc2',
+117 silly addNameRange     '0.11.0-rc3',
+117 silly addNameRange     '0.11.0-rc4',
+117 silly addNameRange     '0.11.0-rc5',
+117 silly addNameRange     '0.11.0-rc6',
+117 silly addNameRange     '0.11.0-rc7',
+117 silly addNameRange     '0.11.0-rc8',
+117 silly addNameRange     '0.11.0-rc9',
+117 silly addNameRange     '0.11.0-rc10',
+117 silly addNameRange     '0.11.0' ] ]
+118 verbose addNamed [ 'sails', '0.11.0' ]
+119 verbose addNamed [ '0.11.0', '0.11.0' ]
+120 silly lockFile 9cfaea8d-sails-0-11-0 sails@0.11.0
+121 verbose lock sails@0.11.0 /home/al/.npm/9cfaea8d-sails-0-11-0.lock
+122 silly addNameRange number 2 { name: 'grunt', range: '*', hasData: true }
+123 silly addNameRange versions [ 'grunt',
+123 silly addNameRange   [ '0.1.0',
+123 silly addNameRange     '0.1.1',
+123 silly addNameRange     '0.1.2',
+123 silly addNameRange     '0.2.0',
+123 silly addNameRange     '0.2.1',
+123 silly addNameRange     '0.2.2',
+123 silly addNameRange     '0.2.3',
+123 silly addNameRange     '0.2.4',
+123 silly addNameRange     '0.2.5',
+123 silly addNameRange     '0.2.6',
+123 silly addNameRange     '0.2.7',
+123 silly addNameRange     '0.2.8',
+123 silly addNameRange     '0.2.9',
+123 silly addNameRange     '0.2.10',
+123 silly addNameRange     '0.2.11',
+123 silly addNameRange     '0.2.12',
+123 silly addNameRange     '0.2.13',
+123 silly addNameRange     '0.2.14',
+123 silly addNameRange     '0.2.15',
+123 silly addNameRange     '0.3.0',
+123 silly addNameRange     '0.3.1',
+123 silly addNameRange     '0.3.2',
+123 silly addNameRange     '0.3.3',
+123 silly addNameRange     '0.3.4',
+123 silly addNameRange     '0.3.5',
+123 silly addNameRange     '0.3.6',
+123 silly addNameRange     '0.3.7',
+123 silly addNameRange     '0.3.8',
+123 silly addNameRange     '0.3.9',
+123 silly addNameRange     '0.3.10',
+123 silly addNameRange     '0.3.11',
+123 silly addNameRange     '0.3.12',
+123 silly addNameRange     '0.3.13',
+123 silly addNameRange     '0.3.14',
+123 silly addNameRange     '0.3.15',
+123 silly addNameRange     '0.3.16',
+123 silly addNameRange     '0.3.17',
+123 silly addNameRange     '0.4.0',
+123 silly addNameRange     '0.4.1',
+123 silly addNameRange     '0.4.2',
+123 silly addNameRange     '0.4.3',
+123 silly addNameRange     '0.4.4',
+123 silly addNameRange     '0.4.5',
+123 silly addNameRange     '0.3.13-a',
+123 silly addNameRange     '0.4.0-a',
+123 silly addNameRange     '0.4.0-rc1',
+123 silly addNameRange     '0.4.0-rc2',
+123 silly addNameRange     '0.4.0-rc3',
+123 silly addNameRange     '0.4.0-rc4',
+123 silly addNameRange     '0.4.0-rc5',
+123 silly addNameRange     '0.4.0-rc6',
+123 silly addNameRange     '0.4.0-rc7',
+123 silly addNameRange     '0.4.0-rc8' ] ]
+124 verbose addNamed [ 'grunt', '0.4.5' ]
+125 verbose addNamed [ '0.4.5', '0.4.5' ]
+126 silly lockFile 81abf7ad-grunt-0-4-5 grunt@0.4.5
+127 verbose lock grunt@0.4.5 /home/al/.npm/81abf7ad-grunt-0-4-5.lock
+128 http 404 https://registry.npmjs.org/tsc
+129 verbose headers { date: 'Fri, 20 Mar 2015 00:01:39 GMT',
+129 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+129 verbose headers   'content-type': 'application/json',
+129 verbose headers   'cache-control': 'max-age=0',
+129 verbose headers   'content-length': '51',
+129 verbose headers   'accept-ranges': 'bytes',
+129 verbose headers   via: '1.1 varnish',
+129 verbose headers   age: '0',
+129 verbose headers   'x-served-by': 'cache-dfw1833-DFW',
+129 verbose headers   'x-cache': 'MISS',
+129 verbose headers   'x-cache-hits': '0',
+129 verbose headers   'x-timer': 'S1426809699.649274,VS0,VE68',
+129 verbose headers   'keep-alive': 'timeout=10, max=50',
+129 verbose headers   connection: 'Keep-Alive' }
+130 silly registry.get cb [ 404,
+130 silly registry.get   { date: 'Fri, 20 Mar 2015 00:01:39 GMT',
+130 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+130 silly registry.get     'content-type': 'application/json',
+130 silly registry.get     'cache-control': 'max-age=0',
+130 silly registry.get     'content-length': '51',
+130 silly registry.get     'accept-ranges': 'bytes',
+130 silly registry.get     via: '1.1 varnish',
+130 silly registry.get     age: '0',
+130 silly registry.get     'x-served-by': 'cache-dfw1833-DFW',
+130 silly registry.get     'x-cache': 'MISS',
+130 silly registry.get     'x-cache-hits': '0',
+130 silly registry.get     'x-timer': 'S1426809699.649274,VS0,VE68',
+130 silly registry.get     'keep-alive': 'timeout=10, max=50',
+130 silly registry.get     connection: 'Keep-Alive' } ]
+131 silly lockFile 5456f48e-tsc tsc@
+132 silly lockFile 5456f48e-tsc tsc@
+133 http 304 https://registry.npmjs.org/webpack
+134 silly registry.get cb [ 304,
+134 silly registry.get   { date: 'Fri, 20 Mar 2015 00:01:39 GMT',
+134 silly registry.get     server: 'Apache',
+134 silly registry.get     via: '1.1 varnish',
+134 silly registry.get     'last-modified': 'Fri, 20 Mar 2015 00:01:39 GMT',
+134 silly registry.get     'cache-control': 'max-age=60',
+134 silly registry.get     etag: '"9O6KI7FCVUM37XJ0JTBQV33JH"',
+134 silly registry.get     age: '0',
+134 silly registry.get     'x-served-by': 'cache-dfw1823-DFW',
+134 silly registry.get     'x-cache': 'HIT',
+134 silly registry.get     'x-cache-hits': '1',
+134 silly registry.get     'x-timer': 'S1426809699.676873,VS0,VE48',
+134 silly registry.get     vary: 'Accept',
+134 silly registry.get     'content-length': '0',
+134 silly registry.get     'keep-alive': 'timeout=10, max=50',
+134 silly registry.get     connection: 'Keep-Alive' } ]
+135 verbose etag https://registry.npmjs.org/webpack from cache
+136 silly addNameRange number 2 { name: 'webpack', range: '*', hasData: true }
+137 silly addNameRange versions [ 'webpack',
+137 silly addNameRange   [ '0.1.0',
+137 silly addNameRange     '0.1.1',
+137 silly addNameRange     '0.1.2',
+137 silly addNameRange     '0.1.3',
+137 silly addNameRange     '0.1.4',
+137 silly addNameRange     '0.1.5',
+137 silly addNameRange     '0.1.6',
+137 silly addNameRange     '0.2.0',
+137 silly addNameRange     '0.2.1',
+137 silly addNameRange     '0.2.2',
+137 silly addNameRange     '0.2.3',
+137 silly addNameRange     '0.2.4',
+137 silly addNameRange     '0.2.6',
+137 silly addNameRange     '0.2.7',
+137 silly addNameRange     '0.2.8',
+137 silly addNameRange     '0.3.0',
+137 silly addNameRange     '0.3.1',
+137 silly addNameRange     '0.3.2',
+137 silly addNameRange     '0.3.3',
+137 silly addNameRange     '0.3.4',
+137 silly addNameRange     '0.3.6',
+137 silly addNameRange     '0.3.7',
+137 silly addNameRange     '0.3.8',
+137 silly addNameRange     '0.3.9',
+137 silly addNameRange     '0.3.10',
+137 silly addNameRange     '0.3.11',
+137 silly addNameRange     '0.3.12',
+137 silly addNameRange     '0.3.13',
+137 silly addNameRange     '0.3.14',
+137 silly addNameRange     '0.3.15',
+137 silly addNameRange     '0.3.16',
+137 silly addNameRange     '0.3.17',
+137 silly addNameRange     '0.3.18',
+137 silly addNameRange     '0.3.19',
+137 silly addNameRange     '0.3.20',
+137 silly addNameRange     '0.4.0',
+137 silly addNameRange     '0.4.1',
+137 silly addNameRange     '0.4.2',
+137 silly addNameRange     '0.4.3',
+137 silly addNameRange     '0.4.4',
+137 silly addNameRange     '0.4.5',
+137 silly addNameRange     '0.4.6',
+137 silly addNameRange     '0.4.7',
+137 silly addNameRange     '0.4.8',
+137 silly addNameRange     '0.4.9',
+137 silly addNameRange     '0.4.10',
+137 silly addNameRange     '0.4.11',
+137 silly addNameRange     '0.4.12',
+137 silly addNameRange     '0.4.13',
+137 silly addNameRange     '0.4.14',
+137 silly addNameRange     '0.4.15',
+137 silly addNameRange     '0.4.16',
+137 silly addNameRange     '0.4.17',
+137 silly addNameRange     '0.4.18',
+137 silly addNameRange     '0.4.19',
+137 silly addNameRange     '0.4.20',
+137 silly addNameRange     '0.4.21',
+137 silly addNameRange     '0.4.23',
+137 silly addNameRange     '0.4.24',
+137 silly addNameRange     '0.4.25',
+137 silly addNameRange     '0.5.0',
+137 silly addNameRange     '0.5.1',
+137 silly addNameRange     '0.5.2',
+137 silly addNameRange     '0.5.3',
+137 silly addNameRange     '0.5.4',
+137 silly addNameRange     '0.5.5',
+137 silly addNameRange     '0.5.6',
+137 silly addNameRange     '0.5.7',
+137 silly addNameRange     '0.5.8',
+137 silly addNameRange     '0.5.10',
+137 silly addNameRange     '0.6.0',
+137 silly addNameRange     '0.6.1',
+137 silly addNameRange     '0.6.2',
+137 silly addNameRange     '0.7.0-beta',
+137 silly addNameRange     '0.7.0-beta2',
+137 silly addNameRange     '0.7.0-beta3',
+137 silly addNameRange     '0.7.0-beta4',
+137 silly addNameRange     '0.7.0-beta5',
+137 silly addNameRange     '0.7.0-beta6',
+137 silly addNameRange     '0.7.0-beta7',
+137 silly addNameRange     '0.7.0-beta8',
+137 silly addNameRange     '0.7.0',
+137 silly addNameRange     '0.7.1',
+137 silly addNameRange     '0.7.2',
+137 silly addNameRange     '0.7.3',
+137 silly addNameRange     '0.7.4',
+137 silly addNameRange     '0.7.5',
+137 silly addNameRange     '0.7.6',
+137 silly addNameRange     '0.7.7',
+137 silly addNameRange     '0.7.8',
+137 silly addNameRange     '0.7.9',
+137 silly addNameRange     '0.7.11',
+137 silly addNameRange     '0.7.12',
+137 silly addNameRange     '0.7.13',
+137 silly addNameRange     '0.7.14',
+137 silly addNameRange     '0.7.15',
+137 silly addNameRange     '0.7.16',
+137 silly addNameRange     '0.7.17',
+137 silly addNameRange     '0.8.0-beta1',
+137 silly addNameRange     '0.8.0-beta2',
+137 silly addNameRange     '0.8.0-beta3',
+137 silly addNameRange     '0.8.0-beta4',
+137 silly addNameRange     '0.8.0',
+137 silly addNameRange     '0.8.2',
+137 silly addNameRange     '0.8.3',
+137 silly addNameRange     '0.9.0-beta1',
+137 silly addNameRange     '0.9.0-beta2',
+137 silly addNameRange     '0.9.0-beta4',
+137 silly addNameRange     '0.9.0-beta5',
+137 silly addNameRange     '0.9.0-beta6',
+137 silly addNameRange     '0.9.0-beta7',
+137 silly addNameRange     '0.9.0-beta8',
+137 silly addNameRange     '0.9.0-beta9',
+137 silly addNameRange     '0.9.0-beta10',
+137 silly addNameRange     '0.9.0-beta11',
+137 silly addNameRange     '0.9.0-beta12',
+137 silly addNameRange     '0.9.0-beta13',
+137 silly addNameRange     '0.9.0-beta14',
+137 silly addNameRange     '0.9.0-beta15',
+137 silly addNameRange     '0.9.0-beta16',
+137 silly addNameRange     '0.9.0-beta17',
+137 silly addNameRange     '0.9.0-beta18',
+137 silly addNameRange     '0.9.0-beta19',
+137 silly addNameRange     '0.9.0-beta20',
+137 silly addNameRange     '0.9.0-beta21',
+137 silly addNameRange     '0.9.0-beta22',
+137 silly addNameRange     '0.9.0-beta23',
+137 silly addNameRange     '0.9.0-beta24',
+137 silly addNameRange     '0.9.0-beta25',
+137 silly addNameRange     '0.9.0-beta26',
+137 silly addNameRange     '0.9.0-beta27',
+137 silly addNameRange     '0.9.0-beta28',
+137 silly addNameRange     '0.9.0-beta29',
+137 silly addNameRange     '0.9.0-beta30',
+137 silly addNameRange     '0.9.0-beta31',
+137 silly addNameRange     '0.9.0-beta32',
+137 silly addNameRange     '0.9.0-beta33',
+137 silly addNameRange     '0.9.0-beta34',
+137 silly addNameRange     '0.9.0-beta35',
+137 silly addNameRange     '0.9.0-beta36',
+137 silly addNameRange     '0.9.0-beta37',
+137 silly addNameRange     '0.9.0-beta38',
+137 silly addNameRange     '0.9.0',
+137 silly addNameRange     '0.9.1',
+137 silly addNameRange     '0.9.2',
+137 silly addNameRange     '0.9.3',
+137 silly addNameRange     '0.10.0-beta2',
+137 silly addNameRange     '0.10.0-beta3',
+137 silly addNameRange     '0.10.0-beta5',
+137 silly addNameRange     '0.10.0-beta6',
+137 silly addNameRange     '0.10.0-beta7',
+137 silly addNameRange     '0.10.0-beta8',
+137 silly addNameRange     '0.10.0-beta9',
+137 silly addNameRange     '0.10.0-beta10',
+137 silly addNameRange     '0.10.0-beta11',
+137 silly addNameRange     '0.10.0-beta12',
+137 silly addNameRange     '0.10.0-beta13',
+137 silly addNameRange     '0.10.0-beta14',
+137 silly addNameRange     '0.10.0-beta15',
+137 silly addNameRange     '0.10.0-beta16',
+137 silly addNameRange     '0.10.0-beta17',
+137 silly addNameRange     '0.10.0-beta18',
+137 silly addNameRange     '0.10.0-beta19',
+137 silly addNameRange     '0.10.0-beta20',
+137 silly addNameRange     '0.10.0-beta21',
+137 silly addNameRange     '0.10.0-beta22',
+137 silly addNameRange     '0.10.0-beta23',
+137 silly addNameRange     '0.10.0-beta24',
+137 silly addNameRange     '0.10.0-beta25',
+137 silly addNameRange     '0.10.0',
+137 silly addNameRange     '0.11.0-beta1',
+137 silly addNameRange     '0.11.0-beta2',
+137 silly addNameRange     '0.11.0-beta3',
+137 silly addNameRange     '0.11.0-beta4',
+137 silly addNameRange     '0.11.0-beta5',
+137 silly addNameRange     '0.11.0-beta6',
+137 silly addNameRange     '0.11.0-beta7',
+137 silly addNameRange     '0.11.0-beta8',
+137 silly addNameRange     '0.11.0-beta9',
+137 silly addNameRange     '0.11.0-beta10',
+137 silly addNameRange     '0.11.0-beta11',
+137 silly addNameRange     '0.11.0-beta12',
+137 silly addNameRange     '0.11.0-beta13',
+137 silly addNameRange     '0.11.0-beta14',
+137 silly addNameRange     '0.11.0-beta15',
+137 silly addNameRange     '0.11.0-beta16',
+137 silly addNameRange     '0.11.0-beta17',
+137 silly addNameRange     '0.11.0-beta18',
+137 silly addNameRange     '0.11.0-beta19',
+137 silly addNameRange     '0.11.0-beta20',
+137 silly addNameRange     '0.11.0-beta21',
+137 silly addNameRange     '0.11.0-beta22',
+137 silly addNameRange     '0.11.0-beta23',
+137 silly addNameRange     '0.11.0-beta24',
+137 silly addNameRange     '0.11.0-beta25',
+137 silly addNameRange     '0.11.0-beta26',
+137 silly addNameRange     '0.11.0-beta27',
+137 silly addNameRange     '0.11.0-beta28',
+137 silly addNameRange     '0.11.0-beta29',
+137 silly addNameRange     '0.11.0',
+137 silly addNameRange     '0.11.1',
+137 silly addNameRange     '0.11.2',
+137 silly addNameRange     '0.11.3',
+137 silly addNameRange     '0.11.4',
+137 silly addNameRange     '0.11.5',
+137 silly addNameRange     '0.11.6',
+137 silly addNameRange     '0.11.7',
+137 silly addNameRange     '0.11.8',
+137 silly addNameRange     '0.11.9',
+137 silly addNameRange     '0.11.10',
+137 silly addNameRange     '0.11.11',
+137 silly addNameRange     '0.11.12',
+137 silly addNameRange     '0.11.13',
+137 silly addNameRange     '0.11.14',
+137 silly addNameRange     '0.11.15',
+137 silly addNameRange     '1.0.0-beta1',
+137 silly addNameRange     '1.0.0-beta2',
+137 silly addNameRange     '1.0.0-beta3',
+137 silly addNameRange     '1.0.0-beta4',
+137 silly addNameRange     '0.11.16',
+137 silly addNameRange     '0.11.17',
+137 silly addNameRange     '0.11.18',
+137 silly addNameRange     '1.0.0-beta5',
+137 silly addNameRange     '1.0.0-beta6',
+137 silly addNameRange     '1.0.0-beta7',
+137 silly addNameRange     '1.0.0-beta8',
+137 silly addNameRange     '1.0.0-beta9',
+137 silly addNameRange     '1.0.0-rc1',
+137 silly addNameRange     '1.0.0-rc2',
+137 silly addNameRange     '1.0.0-rc3',
+137 silly addNameRange     '1.0.0-rc4',
+137 silly addNameRange     '1.0.0-rc5',
+137 silly addNameRange     '1.0.0-rc7',
+137 silly addNameRange     '1.0.0-rc8',
+137 silly addNameRange     '1.0.0-rc9',
+137 silly addNameRange     '1.0.0-rc11',
+137 silly addNameRange     '1.0.0-rc12',
+137 silly addNameRange     '1.0.0',
+137 silly addNameRange     '1.0.1',
+137 silly addNameRange     '1.0.3',
+137 silly addNameRange     '1.0.4',
+137 silly addNameRange     '1.0.5',
+137 silly addNameRange     '1.1.0-beta1',
+137 silly addNameRange     '1.1.0-beta2',
+137 silly addNameRange     '1.1.0-beta3',
+137 silly addNameRange     '1.1.0-beta4',
+137 silly addNameRange     '1.1.0-beta5',
+137 silly addNameRange     '1.1.0-beta6',
+137 silly addNameRange     '1.1.0-beta7',
+137 silly addNameRange     '1.1.0-beta8',
+137 silly addNameRange     '1.1.0-beta9',
+137 silly addNameRange     '1.1.0-beta10',
+137 silly addNameRange     '1.1.0-beta12',
+137 silly addNameRange     '1.1.0',
+137 silly addNameRange     '1.1.1',
+137 silly addNameRange     '1.1.2',
+137 silly addNameRange     '1.1.3',
+137 silly addNameRange     '1.1.4',
+137 silly addNameRange     '1.1.5',
+137 silly addNameRange     '1.1.6',
+137 silly addNameRange     '1.1.7',
+137 silly addNameRange     '1.1.8',
+137 silly addNameRange     '1.1.9',
+137 silly addNameRange     '1.1.10',
+137 silly addNameRange     '1.1.11',
+137 silly addNameRange     '1.2.0-beta1',
+137 silly addNameRange     '1.2.0-beta2',
+137 silly addNameRange     '1.2.0-beta4',
+137 silly addNameRange     '1.2.0-beta5',
+137 silly addNameRange     '1.2.0-beta6',
+137 silly addNameRange     '1.3.0-beta1',
+137 silly addNameRange     '1.3.0-beta2',
+137 silly addNameRange     '1.3.0-beta3',
+137 silly addNameRange     '1.3.0-beta4',
+137 silly addNameRange     '1.3.0-beta5',
+137 silly addNameRange     '1.3.0-beta6',
+137 silly addNameRange     '1.3.0-beta7',
+137 silly addNameRange     '1.3.0-beta8',
+137 silly addNameRange     '1.3.0-beta9',
+137 silly addNameRange     '1.3.1-beta1',
+137 silly addNameRange     '1.3.1-beta2',
+137 silly addNameRange     '1.3.1-beta3',
+137 silly addNameRange     '1.3.1-beta4',
+137 silly addNameRange     '1.3.1-beta5',
+137 silly addNameRange     '1.3.1-beta6',
+137 silly addNameRange     '1.3.1-beta7',
+137 silly addNameRange     '1.3.1-beta8',
+137 silly addNameRange     '1.3.1-beta9',
+137 silly addNameRange     '1.3.2-beta1',
+137 silly addNameRange     '1.3.2-beta2',
+137 silly addNameRange     '1.3.2-beta3',
+137 silly addNameRange     '1.3.2-beta4',
+137 silly addNameRange     '1.3.2-beta5',
+137 silly addNameRange     '1.3.2-beta6',
+137 silly addNameRange     '1.3.2-beta7',
+137 silly addNameRange     '1.3.2-beta8',
+137 silly addNameRange     '1.3.2-beta9',
+137 silly addNameRange     '1.3.3-beta1',
+137 silly addNameRange     '1.3.3-beta2',
+137 silly addNameRange     '1.3.4',
+137 silly addNameRange     '1.3.5',
+137 silly addNameRange     '1.3.6',
+137 silly addNameRange     '1.3.7',
+137 silly addNameRange     '1.4.0-beta1',
+137 silly addNameRange     '1.4.0-beta2',
+137 silly addNameRange     '1.4.0-beta3',
+137 silly addNameRange     '1.4.0-beta4',
+137 silly addNameRange     '1.4.0-beta5',
+137 silly addNameRange     '1.4.0-beta6',
+137 silly addNameRange     '1.4.0-beta7',
+137 silly addNameRange     '1.4.0-beta8',
+137 silly addNameRange     '1.4.0-beta9',
+137 silly addNameRange     '1.4.0-beta10',
+137 silly addNameRange     '1.4.1-beta1',
+137 silly addNameRange     '1.4.2',
+137 silly addNameRange     '1.4.3',
+137 silly addNameRange     '1.4.4',
+137 silly addNameRange     '1.4.5',
+137 silly addNameRange     '1.4.6',
+137 silly addNameRange     '1.4.7',
+137 silly addNameRange     '1.4.8',
+137 silly addNameRange     '1.4.9',
+137 silly addNameRange     '1.4.10',
+137 silly addNameRange     '1.4.11',
+137 silly addNameRange     '1.4.12',
+137 silly addNameRange     '1.4.13',
+137 silly addNameRange     '1.4.14',
+137 silly addNameRange     '1.4.15',
+137 silly addNameRange     '1.5.0',
+137 silly addNameRange     '1.5.1',
+137 silly addNameRange     '1.5.2',
+137 silly addNameRange     '1.5.3',
+137 silly addNameRange     '1.6.0',
+137 silly addNameRange     '1.7.0',
+137 silly addNameRange     '1.7.1',
+137 silly addNameRange     '1.7.2',
+137 silly addNameRange     '1.7.3' ] ]
+138 verbose addNamed [ 'webpack', '1.7.3' ]
+139 verbose addNamed [ '1.7.3', '1.7.3' ]
+140 silly lockFile 9dcc9d46-webpack-1-7-3 webpack@1.7.3
+141 verbose lock webpack@1.7.3 /home/al/.npm/9dcc9d46-webpack-1-7-3.lock
+142 silly lockFile 9dcc9d46-webpack-1-7-3 webpack@1.7.3
+143 silly lockFile 9dcc9d46-webpack-1-7-3 webpack@1.7.3
+144 silly lockFile 9c8dd08b-webpack webpack@
+145 silly lockFile 9c8dd08b-webpack webpack@
+146 silly lockFile 9cfaea8d-sails-0-11-0 sails@0.11.0
+147 silly lockFile 9cfaea8d-sails-0-11-0 sails@0.11.0
+148 silly lockFile 5291d548-sails sails@
+149 silly lockFile 5291d548-sails sails@
+150 silly lockFile 81abf7ad-grunt-0-4-5 grunt@0.4.5
+151 silly lockFile 81abf7ad-grunt-0-4-5 grunt@0.4.5
+152 silly lockFile 55f1ff24-grunt grunt@
+153 silly lockFile 55f1ff24-grunt grunt@
+154 http 200 https://registry.npmjs.org/bower
+155 silly registry.get cb [ 200,
+155 silly registry.get   { date: 'Fri, 20 Mar 2015 00:01:39 GMT',
+155 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+155 silly registry.get     etag: '"51BJED1C4RZB5W48BK7WRUX2L"',
+155 silly registry.get     'content-type': 'application/json',
+155 silly registry.get     'cache-control': 'max-age=60',
+155 silly registry.get     'content-length': '106146',
+155 silly registry.get     'accept-ranges': 'bytes',
+155 silly registry.get     via: '1.1 varnish',
+155 silly registry.get     age: '29',
+155 silly registry.get     'x-served-by': 'cache-dfw1831-DFW',
+155 silly registry.get     'x-cache': 'HIT',
+155 silly registry.get     'x-cache-hits': '1',
+155 silly registry.get     'x-timer': 'S1426809699.647262,VS0,VE0',
+155 silly registry.get     vary: 'Accept',
+155 silly registry.get     'keep-alive': 'timeout=10, max=50',
+155 silly registry.get     connection: 'Keep-Alive' } ]
+156 silly addNameRange number 2 { name: 'bower', range: '*', hasData: true }
+157 silly addNameRange versions [ 'bower',
+157 silly addNameRange   [ '0.1.0',
+157 silly addNameRange     '0.1.2',
+157 silly addNameRange     '0.1.3',
+157 silly addNameRange     '0.2.0',
+157 silly addNameRange     '0.3.0',
+157 silly addNameRange     '0.3.1',
+157 silly addNameRange     '0.3.2',
+157 silly addNameRange     '0.4.0',
+157 silly addNameRange     '0.5.0',
+157 silly addNameRange     '0.5.1',
+157 silly addNameRange     '0.6.0',
+157 silly addNameRange     '0.6.1',
+157 silly addNameRange     '0.6.2',
+157 silly addNameRange     '0.6.3',
+157 silly addNameRange     '0.6.4',
+157 silly addNameRange     '0.6.5',
+157 silly addNameRange     '0.6.6',
+157 silly addNameRange     '0.6.7',
+157 silly addNameRange     '0.6.8',
+157 silly addNameRange     '0.7.0',
+157 silly addNameRange     '0.7.1',
+157 silly addNameRange     '0.8.0',
+157 silly addNameRange     '0.8.1',
+157 silly addNameRange     '0.8.2',
+157 silly addNameRange     '0.8.3',
+157 silly addNameRange     '0.8.4',
+157 silly addNameRange     '0.8.5',
+157 silly addNameRange     '0.8.6',
+157 silly addNameRange     '0.9.0',
+157 silly addNameRange     '0.9.1',
+157 silly addNameRange     '0.9.2',
+157 silly addNameRange     '0.10.0',
+157 silly addNameRange     '1.0.0',
+157 silly addNameRange     '1.0.1',
+157 silly addNameRange     '1.0.2',
+157 silly addNameRange     '1.0.3',
+157 silly addNameRange     '1.1.0',
+157 silly addNameRange     '1.1.1',
+157 silly addNameRange     '1.1.2',
+157 silly addNameRange     '1.2.0',
+157 silly addNameRange     '1.2.1',
+157 silly addNameRange     '1.2.2',
+157 silly addNameRange     '1.2.3',
+157 silly addNameRange     '1.2.4',
+157 silly addNameRange     '1.2.5',
+157 silly addNameRange     '1.2.6',
+157 silly addNameRange     '1.2.7',
+157 silly addNameRange     '1.2.8',
+157 silly addNameRange     '1.3.0',
+157 silly addNameRange     '1.3.1',
+157 silly addNameRange     '1.3.2',
+157 silly addNameRange     '1.3.3',
+157 silly addNameRange     '1.3.4',
+157 silly addNameRange     '1.3.5',
+157 silly addNameRange     '1.3.6',
+157 silly addNameRange     '1.3.7',
+157 silly addNameRange     '1.3.8',
+157 silly addNameRange     '1.3.9',
+157 silly addNameRange     '1.3.10',
+157 silly addNameRange     '1.3.11',
+157 silly addNameRange     '1.3.12' ] ]
+158 verbose addNamed [ 'bower', '1.3.12' ]
+159 verbose addNamed [ '1.3.12', '1.3.12' ]
+160 silly lockFile 9819431c-bower-1-3-12 bower@1.3.12
+161 verbose lock bower@1.3.12 /home/al/.npm/9819431c-bower-1-3-12.lock
+162 silly lockFile 9819431c-bower-1-3-12 bower@1.3.12
+163 silly lockFile 9819431c-bower-1-3-12 bower@1.3.12
+164 silly lockFile 1240aab1-bower bower@
+165 silly lockFile 1240aab1-bower bower@
+166 error 404 404 Not Found: tsc
+166 error 404
+166 error 404 'tsc' is not in the npm registry.
+166 error 404 You should bug the author to publish it
+166 error 404
+166 error 404 Note that you can also install from a
+166 error 404 tarball, folder, or http url, or git url.
+167 error System Linux 3.16.0-31-generic
+168 error command "/home/al/bin/node" "/home/al/bin/npm" "install" "-g" "sails" "bower" "grunt" "tsc" "webpack"
+169 error cwd /home/al/git/sharoom
+170 error node -v v0.10.36
+171 error npm -v 1.4.28
+172 error code E404
+173 verbose exit [ 1, true ]

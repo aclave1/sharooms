@@ -10,6 +10,8 @@
  * http://sailsjs.org/#/documentation/reference/sails.config/sails.config.sockets.html
  */
 
+var SocketsHandler = require(__appdir+'lib/sockets');
+
 module.exports.sockets = {
 
 
@@ -38,7 +40,7 @@ module.exports.sockets = {
   * via port 6379                                                            *
   *                                                                          *
   ***************************************************************************/
-  // adapter: 'memory',
+  adapter: 'memory',
 
   //
   // -OR-
@@ -114,16 +116,15 @@ module.exports.sockets = {
   // },
 
 
+
   /***************************************************************************
   *                                                                          *
   * This custom afterDisconnect function will be run each time a socket         *
   * disconnects                                                              *
   *                                                                          *
   ***************************************************************************/
-  // afterDisconnect: function(session, socket, cb) {
-  //   // By default: do nothing.
-  //   return cb();
-  // },
+  afterDisconnect: SocketsHandler.onDisconnect
+
 
 
 

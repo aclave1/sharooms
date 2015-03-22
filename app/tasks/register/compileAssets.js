@@ -1,6 +1,7 @@
 module.exports = function (grunt) {
 	grunt.registerTask('compileAssets', [
 		'clean:dev',
+    'webpack',
 		'jst:dev',
 		'less:dev',
 		'copy:dev',

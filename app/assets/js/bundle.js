@@ -69,9 +69,23 @@
 	      __webpack_require__(4)().socket//getting the sails.io function, invoking it, and returning the socket
 	    )
 	  )
-	  .controller('TestController', ['$scope','io', function ($scope,io) {
+	  .controller('MainController', ['$scope','io', function ($scope,io) {
 	    $scope.test = "Angularjs works";
+
+
+	    io.post("/screen/register",{roomName:"mainroom"},function(one,two,three){
+	      debugger;
+	      $scope.screenNum = one.screenNum;
+	      $scope.$apply();
+
+
+
+	    });
+
+
+
 	  }])
+
 	;
 
 
