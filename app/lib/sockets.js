@@ -1,5 +1,6 @@
 ///<reference path="../typings/tsd.d.ts"/>
 var Promise = require('bluebird');
+var eventstrings = require('./iso/eventstrings');
 var RoomTable = (function () {
     //rooms:Map<string,Room>;
     function RoomTable() {
@@ -74,6 +75,28 @@ var Sockets = (function () {
         }
         //we should let all the other screens know that this one disconnected
         return cb();
+    };
+    Sockets.prototype.getScreens = function (roomName) {
+        return new Promise(function (res, rej) {
+            var room = roomTable.rooms[roomName];
+            var screens = new Array();
+            if (room) {
+                for (var k in room.screens) {
+                    screens.push(room.screens[k]);
+                }
+            }
+            else {
+                return rej();
+            }
+            return res(screens);
+        });
+    };
+    Sockets.prototype.displayFileOnScreen = function (screenId, filepath) {
+        return new Promise(function (res, rej) {
+            var room = roomTable.socketsToRooms[screenId];
+            var screen = room.screens[screenId];
+            screen.socket.emit(eventstrings.screen.display, { fd: filepath });
+        });
     };
     return Sockets;
 })();

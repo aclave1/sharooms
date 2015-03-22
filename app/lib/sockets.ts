@@ -3,6 +3,7 @@
 import ScreenQuery = require('../api/types/ScreenQuery');
 import Promise = require('bluebird');
 
+var eventstrings = require('./iso/eventstrings');
 
 declare var sails:any;
 
@@ -42,10 +43,10 @@ class ScreenEntry {
   num:number;
 
 
-  constructor(def?:any){
-    if(def){
+  constructor(def?:any) {
+    if (def) {
       this.id = def.id ? def.id : null;
-      this.socket = def.socket? def.socket : null;
+      this.socket = def.socket ? def.socket : null;
       this.num = def.num ? def.num : null;
     }
   }
@@ -119,6 +120,45 @@ class Sockets {
 
     //we should let all the other screens know that this one disconnected
     return cb();
+  }
+
+
+  getScreens(roomName:string) {
+
+    return new Promise((res:any, rej:any)=> {
+
+      var room = roomTable.rooms[roomName];
+      var screens:Array<Screen> = new Array<Screen>();
+      if(room){
+
+        for (var k in room.screens) {
+          screens.push(room.screens[k]);
+        }
+
+      }else{
+        return rej();
+      }
+
+      return res(screens);
+    });
+
+  }
+
+  displayFileOnScreen(screenId:string,filepath:string){
+
+    return new Promise((res:any,rej:any)=>{
+      var room:Room = roomTable.socketsToRooms[screenId];
+      var screen = room.screens[screenId];
+
+
+      screen.socket.emit(eventstrings.screen.display,{fd:filepath});
+
+
+
+    });
+
+
+
   }
 
 }

@@ -1,4 +1,21 @@
-<div>
-  <h1>Sharooms Mobile
+<div ng-controller="MobileController">
+  <h1>Sharooms Mobile</h1>
   <button>Update Room</button>
+
+  {{test}}
+
+  <button ng-file-select ng-model="files" ng-file-change="fileSelected($files, $event)">Upload file</button>
+
+
+  <div ng-if="showScreenPicker">
+    Choose a screen:
+    <ul>
+      <li ng-repeat="screen in screens">
+        <button ng-click="upload($index)">{{screen.screenNum}}</button>
+      </li>
+    </ul>
+  </div>
+
+
+
 </div>

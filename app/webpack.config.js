@@ -20,10 +20,12 @@ module.exports = {
             //"router": "vendor/angular-ui-router/release/angular-ui-router.min.js",
             //"jqueryui": "vendor/jquery-ui/ui/minified/jquery-ui.min.js",
             //"angular-bootstrap": "vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"
+            "ngfile": "vendor/ng-file-upload/angular-file-upload-all.min.js"
+
         },
         root: ['assets/js', 'assets/js/modules','node_modules'],
         extensions: ['', '.webpack.js', '.web.js', '.ts', '.js'],
-        modulesDirectories:['node_modules']
+        modulesDirectories:['node_modules','lib/iso']
     },
     resolveLoader:{
         root: [path.join(__dirname,"node_modules")]

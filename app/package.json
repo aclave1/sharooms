@@ -34,5 +34,8 @@
     "url": "git://github.com/al/app.git"
   },
   "author": "al",
-  "license": ""
+  "license": "",
+  "devDependencies": {
+    "mime": "^1.3.4"
+  }
 }

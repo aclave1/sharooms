@@ -1,5 +1,6 @@
-require('angular');
 
+require('angular');
+require('ngfile');
 
 require('./app');
 
