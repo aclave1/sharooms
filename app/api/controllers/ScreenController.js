@@ -1,4 +1,5 @@
 /// <reference path="../../typings/tsd.d.ts"/>
+/// <reference path="../types/types.d.ts"/>
 var path = require('path');
 var fs = require('fs');
 var mime = require('mime');
@@ -32,12 +33,17 @@ var ScreenController = (function () {
     ScreenController.prototype.upload = function (req, res) {
         var params = req.params.all();
         req.file('file').upload(function (err, files) {
-            var file = files[0];
             if (err) {
                 return res.status(500).json({ error: err });
             }
-            return SocketHandler.displayFileOnScreen(params.screenId, path.basename(file.fd)).then(function (status) {
-                return res.json({ status: status });
+            var file = files[0];
+            return RoomFile.create({
+                roomName: params.roomName,
+                fd: path.basename(file.fd)
+            }).then(function (created) {
+                return SocketHandler.displayFileOnScreen(params.screenId, path.basename(created.fd));
+            }).then(function (status) {
+                return res.status(200).json({ status: status });
             });
         });
     };
@@ -51,6 +57,14 @@ var ScreenController = (function () {
         res.setHeader('Content-Length', stat.size);
         fs.createReadStream(filePath).pipe(res);
         return;
+    };
+    ScreenController.prototype.getFilesForRoom = function (req, res) {
+        var roomName = req.params.all().roomName;
+        return RoomFile.find().where({ roomName: roomName }).then(function (found) {
+            return res.json({
+                files: found.reverse()
+            });
+        });
     };
     return ScreenController;
 })();
