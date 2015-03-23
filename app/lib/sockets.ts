@@ -153,7 +153,7 @@ class Sockets {
 
       screen.socket.emit(eventstrings.screen.display,{fd:filepath});
 
-
+      res();
 
     });
 

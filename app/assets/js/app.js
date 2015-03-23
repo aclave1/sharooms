@@ -38,10 +38,11 @@ module.exports = angular
     $scope.test = "chickens";
     $scope.showScreenPicker = false;
     $scope.screens = [];
+    $scope.roomFiles = [];
     $scope.files = [];
 
     function buildUploadUrl(screen) {
-      return "/upload?" + "screenId="+screen.screenId
+      return "/upload?" + ["screenId="+screen.screenId,"roomName="+hardCodedRoom.roomName].join("&")
     }
 
     $scope.upload = function ($index) {
@@ -65,6 +66,7 @@ module.exports = angular
             console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
           }).success(function (data, status, headers, config) {
             console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+            getRoomFiles();
           });
         }
       }
@@ -88,7 +90,19 @@ module.exports = angular
       $scope.showScreenPicker = false;
     }
 
+    function getRoomFiles(){
+      io.get('/screen/files?roomName='+hardCodedRoom.roomName,function(response,jwr){
+        setRoomFiles(response.files);
+      });
+    }
 
+
+    function setRoomFiles(files){
+      $scope.roomFiles = files;
+      $scope.$apply();
+    }
+
+    getRoomFiles();
 
   }])
 ;

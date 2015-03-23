@@ -96,6 +96,7 @@ var Sockets = (function () {
             var room = roomTable.socketsToRooms[screenId];
             var screen = room.screens[screenId];
             screen.socket.emit(eventstrings.screen.display, { fd: filepath });
+            res();
         });
     };
     return Sockets;

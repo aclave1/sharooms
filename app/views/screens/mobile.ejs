@@ -16,6 +16,14 @@
     </ul>
   </div>
 
+  <div>
+    <ul style="overflow-x:scroll;overflow-y:hidden;white-space: nowrap; height:200px;">
+      <li ng-repeat="file in roomFiles" style="display:inline;">
+        <img style="height:200px; width:auto;display:inline;" ng-src="/download?fd={{file.fd}}">
+      </li>
+    </ul>
+  </div>
+
 
 
 </div>

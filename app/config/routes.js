@@ -62,6 +62,11 @@ module.exports.routes = {
   'get /download':{
     controller: 'ScreenController',
     action: 'download'
+  },
+
+  'get /screen/files':{
+    controller:'ScreenController',
+    action:'getFilesForRoom'
   }
 
   /***************************************************************************
