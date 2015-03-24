@@ -5,4 +5,3 @@ var RoomFile = {
     }
 };
 module.exports = RoomFile;
-//# sourceMappingURL=RoomFile.js.map

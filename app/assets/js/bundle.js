@@ -100,6 +100,9 @@
 	  .controller('MobileController',['$scope','io','$upload',function($scope,io,$upload){
 	    $scope.test = "chickens";
 	    $scope.showScreenPicker = false;
+	    $scope.currentFile = null;
+	    $scope.clickMap = [];
+
 	    $scope.screens = [];
 	    $scope.roomFiles = [];
 	    $scope.files = [];
@@ -109,9 +112,7 @@
 	    }
 
 	    $scope.upload = function ($index) {
-
 	      var screen = $scope.screens[$index];
-
 
 	      var url = buildUploadUrl(screen);
 
@@ -125,6 +126,7 @@
 	            fileFormDataName:'file',
 	            file: file
 	          }).progress(function (evt) {
+	            hideScreenPicker();
 	            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
 	            console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
 	          }).success(function (data, status, headers, config) {
@@ -135,13 +137,33 @@
 	      }
 	    };
 
-
-	    $scope.fileSelected = function($files,$event){
-	      io.post('/screen/getscreens',hardCodedRoom,function(response,body){
+	    //gets the list of screens and their sockets
+	    $scope.getScreens = function () {
+	      io.post('/screen/getscreens', hardCodedRoom, function (response, body) {
 	        showScreenPicker();
 	        $scope.screens = response.screens;
 	        $scope.$apply();
 	      });
+	    };
+	    //when a file is selected from the file picker
+	    $scope.fileSelected = function($files,$event){
+	      this.getScreens();
+	    };
+
+	    //when an image is clicked in the carousel
+	    $scope.imageClick = function($index){
+	      $scope.clickMap = [];
+	      $scope.clickMap[$index] = true;
+	      setCurrentImg($scope.roomFiles[$index]);
+
+	    };
+
+	    $scope.chooseScreenToShow = function($index){
+
+	    };
+
+	    $scope.imgWasClicked = function($index){
+	     return $scope.clickMap[$index] === true;
 	    };
 
 
@@ -159,13 +181,30 @@
 	      });
 	    }
 
+	    $scope.showOnScreen = function($index){
+	      var screen = $scope.screens[$index];
 
+	      var request = {
+	        fd:$scope.currentFile.fd,
+	        screenId:screen.screenId
+	      };
+	      io.post('/screen/show',request,function(response){
+
+	      });
+	    };
+
+	    //the last image that was clicked
+	    function setCurrentImg(file){
+	      $scope.currentFile = file;
+	    }
 	    function setRoomFiles(files){
 	      $scope.roomFiles = files;
 	      $scope.$apply();
 	    }
-
+	    $scope.getScreens();
 	    getRoomFiles();
+
+
 
 	  }])
 	;

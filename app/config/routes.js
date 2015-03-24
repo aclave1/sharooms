@@ -54,6 +54,7 @@ module.exports.routes = {
     controller:'ScreenController',
     action:'getScreens'
   },
+
   'post /upload': {
     controller: 'ScreenController',
     action: 'upload'
@@ -67,8 +68,11 @@ module.exports.routes = {
   'get /screen/files':{
     controller:'ScreenController',
     action:'getFilesForRoom'
+  },
+  'post /screen/show':{
+    controller:'ScreenController',
+    action:'showFile'
   }
-
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

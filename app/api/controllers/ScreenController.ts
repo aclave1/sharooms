@@ -21,7 +21,6 @@ class ScreenController {
   screen(req:Express.Request, res:Express.Response):any {
     var params = req.params.all();
     return res.view("screens/screen");
-
   }
 
 
@@ -31,35 +30,26 @@ class ScreenController {
 
 
   register(req, res) {
-
     var params = req.params.all();
-
-    //sails.sockets.join(req.socket,"mainroom");
     SocketHandler
       .connect(req)
       .then((screen)=> {
         return res.json({"socket": "success", screenNum: screen.num});
-
       });
-
-
   }
 
   getScreens(req:any, res:any) {
     var roomName = req.params.all().roomName;
-
-    SocketHandler
+    return SocketHandler
       .getScreens(roomName)
       .then((screens)=> {
-
         var screenResponse = screens.map((screen)=> {
-
-          return {screenNum: screen.num, screenId: screen.id}
-
+          return {screenNum: screen.num, screenId: screen.id};
         });
-
-
         return res.json({screens: screenResponse});
+      })
+      .catch(()=>{
+        return res.status(500).json({error:"no screens registered"});
       });
   }
 
@@ -73,7 +63,6 @@ class ScreenController {
       if (err) {
         return res.status(500).json({error: err});
       }
-
       var file = files[0];
 
       return RoomFile.create({
@@ -97,18 +86,15 @@ class ScreenController {
   download(req, res) {
     var fd = req.params.all().fd;
 
-    var filePath = path.resolve('.tmp/uploads', fd);
+    var filePath = path.resolve('.tmp/uploads', path.basename(fd));
     var stat = fs.statSync(filePath);
-
-    res.setHeader('Content-disposition', 'attachment; filename=' + fd);
     var type = mime.lookup(fd);
+
+    res      .setHeader('Content-disposition', 'attachment; filename=' + fd);
     res.setHeader('Content-Type', type);
     res.setHeader('Content-Length', stat.size);
 
-
-    fs.createReadStream(filePath).pipe(res);
-    return;
-
+    return fs.createReadStream(filePath).pipe(res);
   }
 
   getFilesForRoom(req:any,res:any){
@@ -124,8 +110,14 @@ class ScreenController {
       ;
 
   }
-
-
+  showFile(req:any,res:any){
+    var params = req.params.all();
+    return SocketHandler
+      .displayFileOnScreen(params.screenId, path.basename(params.fd))
+      .then(()=>{
+        res.status(200).json({status:"success"});
+      });
+  }
 }
 
 

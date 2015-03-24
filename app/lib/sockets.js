@@ -80,13 +80,13 @@ var Sockets = (function () {
         return new Promise(function (res, rej) {
             var room = roomTable.rooms[roomName];
             var screens = new Array();
-            if (room) {
+            if (room === undefined) {
+                rej();
+            }
+            else {
                 for (var k in room.screens) {
                     screens.push(room.screens[k]);
                 }
-            }
-            else {
-                return rej();
             }
             return res(screens);
         });

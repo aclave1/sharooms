@@ -128,15 +128,16 @@ class Sockets {
     return new Promise((res:any, rej:any)=> {
 
       var room = roomTable.rooms[roomName];
+
       var screens:Array<Screen> = new Array<Screen>();
-      if(room){
+      if(room === undefined){
+        rej();
+      }else{
 
         for (var k in room.screens) {
           screens.push(room.screens[k]);
         }
 
-      }else{
-        return rej();
       }
 
       return res(screens);

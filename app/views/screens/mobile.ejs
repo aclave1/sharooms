@@ -1,3 +1,17 @@
+<style>
+  .screenpicker{
+    list-style-type: none;
+    display:inline;
+  }
+  .screen{
+    display:inline;
+  }
+  .room-img-wrapper{
+    display:inline;
+    height:100%;
+
+  }
+</style>
 <div ng-controller="MobileController">
   <h1>Sharooms Mobile</h1>
   <button>Update Room</button>
@@ -9,8 +23,8 @@
 
   <div ng-if="showScreenPicker">
     Choose a screen:
-    <ul>
-      <li ng-repeat="screen in screens">
+    <ul class="screenpicker">
+      <li ng-repeat="screen in screens" class="screen">
         <button ng-click="upload($index)">{{screen.screenNum}}</button>
       </li>
     </ul>
@@ -18,8 +32,15 @@
 
   <div>
     <ul style="overflow-x:scroll;overflow-y:hidden;white-space: nowrap; height:200px;">
-      <li ng-repeat="file in roomFiles" style="display:inline;">
-        <img style="height:200px; width:auto;display:inline;" ng-src="/download?fd={{file.fd}}">
+      <li ng-repeat="file in roomFiles" style="display:inline;position:relative;" style="height:100%;">
+        <div class="room-img-wrapper">
+          <ul style="height:40px;width:100px;position:absolute;top:0;"class="screenpicker" ng-if="imgWasClicked($index)">
+            <li ng-repeat="screen in screens" class="screen">
+              <button ng-click="showOnScreen($index)">{{screen.screenNum}}</button>
+            </li>
+          </ul>
+          <img ng-click="imageClick($index)" style="height:200px; width:auto;display:inline;" ng-src="/download?fd={{file.fd}}">
+        </div>
       </li>
     </ul>
   </div>
