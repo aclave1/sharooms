@@ -1,22 +1,7 @@
-<style>
-  .screenpicker{
-    list-style-type: none;
-    display:inline;
-  }
-  .screen{
-    display:inline;
-  }
-  .room-img-wrapper{
-    display:inline;
-    height:100%;
 
-  }
-</style>
 <div ng-controller="MobileController">
   <h1>Sharooms Mobile</h1>
-  <button>Update Room</button>
 
-  {{test}}
 
   <button ng-file-select ng-model="files" ng-file-change="fileSelected($files, $event)">Upload file</button>
 
@@ -34,7 +19,7 @@
     <ul style="overflow-x:scroll;overflow-y:hidden;white-space: nowrap; height:200px;">
       <li ng-repeat="file in roomFiles" style="display:inline;position:relative;" style="height:100%;">
         <div class="room-img-wrapper">
-          <ul style="height:40px;width:100px;position:absolute;top:0;"class="screenpicker" ng-if="imgWasClicked($index)">
+          <ul class="screenpicker carousel-screenpicker-list" ng-if="imgWasClicked($index)">
             <li ng-repeat="screen in screens" class="screen">
               <button ng-click="showOnScreen($index)">{{screen.screenNum}}</button>
             </li>
