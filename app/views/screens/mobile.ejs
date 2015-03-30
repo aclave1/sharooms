@@ -3,14 +3,14 @@
   <h1>Sharooms Mobile</h1>
 
 
-  <button ng-file-select ng-model="files" ng-file-change="fileSelected($files, $event)">Upload file</button>
+  <button class="btn btn-sm btn-warning" ng-file-select ng-model="files" ng-file-change="fileSelected($files, $event)">Upload file</button>
 
 
   <div ng-if="showScreenPicker">
     Choose a screen:
     <ul class="screenpicker">
       <li ng-repeat="screen in screens" class="screen">
-        <button ng-click="upload($index)">{{screen.screenNum}}</button>
+        <button class="btn btn-sm btn-warning" ng-click="upload($index)">{{screen.screenNum}}</button>
       </li>
     </ul>
   </div>
@@ -21,7 +21,7 @@
         <div class="room-img-wrapper">
           <ul class="screenpicker carousel-screenpicker-list" ng-if="imgWasClicked($index)">
             <li ng-repeat="screen in screens" class="screen">
-              <button ng-click="showOnScreen($index)">{{screen.screenNum}}</button>
+              <button class="btn btn-sm btn-warning" ng-click="showOnScreen($index)">{{screen.screenNum}}</button>
             </li>
           </ul>
           <img ng-click="imageClick($index)" style="height:200px; width:auto;display:inline;" ng-src="/download?fd={{file.fd}}">
