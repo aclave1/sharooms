@@ -3,28 +3,28 @@
   <h1>Sharooms Mobile</h1>
 
 
-  <button class="btn btn-sm btn-warning" ng-file-select ng-model="files" ng-file-change="fileSelected($files, $event)">Upload file</button>
+  <button class="btn btn-sm alert-warning" ng-file-select ng-model="files" ng-file-change="fileSelected($files, $event)">Upload file</button>
 
 
   <div ng-if="showScreenPicker">
     Choose a screen:
     <ul class="screenpicker">
       <li ng-repeat="screen in screens" class="screen">
-        <button class="btn btn-sm btn-warning" ng-click="upload($index)">{{screen.screenNum}}</button>
+        <button class="btn btn-sm alert-warning screenpicker" ng-click="upload($index)">{{screen.screenNum}}</button>
       </li>
     </ul>
   </div>
 
   <div>
-    <ul style="overflow-x:scroll;overflow-y:hidden;white-space: nowrap; height:200px;">
+    <ul class="pic_list">
       <li ng-repeat="file in roomFiles" style="display:inline;position:relative;" style="height:100%;">
         <div class="room-img-wrapper">
           <ul class="screenpicker carousel-screenpicker-list" ng-if="imgWasClicked($index)">
             <li ng-repeat="screen in screens" class="screen">
-              <button class="btn btn-sm btn-warning" ng-click="showOnScreen($index)">{{screen.screenNum}}</button>
+              <button class="btn btn-sm alert-warning" ng-click="showOnScreen($index)">{{screen.screenNum}}</button>
             </li>
           </ul>
-          <img ng-click="imageClick($index)" style="height:200px; width:auto;display:inline;" ng-src="/download?fd={{file.fd}}">
+          <img class="pic" ng-click="imageClick($index)"  ng-src="/download?fd={{file.fd}}">
         </div>
       </li>
     </ul>
