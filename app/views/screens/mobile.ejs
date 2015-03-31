@@ -1,5 +1,5 @@
 
-<div ng-controller="MobileController">
+<div ng-controller="MobileController" class="mobile_wrapper">
   <h1>Sharooms Mobile</h1>
 
 
@@ -7,7 +7,7 @@
 
 
   <div ng-if="showScreenPicker">
-    Choose a screen:
+    <span class="yellow_font">Choose a screen:</span>
     <ul class="screenpicker">
       <li ng-repeat="screen in screens" class="screen">
         <button class="btn btn-sm alert-warning screenpicker" ng-click="upload($index)">{{screen.screenNum}}</button>
