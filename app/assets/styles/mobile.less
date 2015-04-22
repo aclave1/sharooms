@@ -1,3 +1,5 @@
+@yellowfont:#FCF8E3;
+
 .mobile_wrapper{
   background-color: #674172;
   padding: 2%;
@@ -10,10 +12,10 @@
 }
 h1{
   margin-top: 0;
-  color: #FCF8E3;
+  color: @yellowfont;
 }
 .yellow_font{
-  color: #FCF8E3;
+  color: @yellowfont;
 }
 .pic_list{
   padding: 0;
@@ -35,7 +37,12 @@ h1{
   display:inline;
   margin-top: 1%;
   margin-bottom: 1%;
+  padding:0;
 }
+.screenpicker-btn{
+
+}
+
 .screen{
   display:inline;
 }
@@ -51,4 +58,27 @@ h1{
   top: inherit;
   padding-left: 0;
   margin: 2%;
+}
+
+
+.actionsection{
+  min-height:200px;
+  border:1px solid black;
+  padding:20px;
+}
+.resize-btns{
+  color:white;
+}
+.resize-btns > button {
+  font-weight:bold;
+  font-size:1.5em;
+}
+
+.action-label{
+  margin-right:20px;
+  color:@yellowfont;
+}
+#screen-caption{
+  resize:vertical;
+  max-height:200px;
 }

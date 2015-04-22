@@ -2,6 +2,31 @@
 <div ng-controller="MobileController" class="mobile_wrapper">
   <h1>Sharooms Mobile</h1>
 
+  <div class="actionsection">
+    <div class="form-group">
+      <label class="action-label" for="action-screenpicker">Screen</label>
+      <ul id="action-screenpicker" class="screenpicker">
+        <li ng-repeat="screen in screens" class="screen">
+          <button class="btn btn-sm alert-warning screenpicker-btn" ng-click="chooseScreen($index)">{{screen.screenNum}}</button>
+        </li>
+      </ul>
+    </div>
+
+    <div class="resize-btns form-group">
+
+      <label class="action-label" for="action-resizebtns">Resize:</label>
+      <span id="action-resizebtns">
+        <button class="btn alert-warning">-</button>
+        <button class="btn alert-warning">+</button>
+      </span>
+
+    </div>
+    <div>
+      <label class="action-label" for="screen-caption">Caption</label>
+      <textarea class="form-control" id="screen-caption" type="text" ng-model="screenCaption"/>
+      </textarea>
+    </div>
+  </div>
 
   <button class="btn btn-sm alert-warning" ng-file-select ng-model="files" ng-file-change="fileSelected($files, $event)">Upload file</button>
 
@@ -10,7 +35,7 @@
     <span class="yellow_font">Choose a screen:</span>
     <ul class="screenpicker">
       <li ng-repeat="screen in screens" class="screen">
-        <button class="btn btn-sm alert-warning screenpicker" ng-click="upload($index)">{{screen.screenNum}}</button>
+        <button class="btn btn-sm alert-warning screenpicker-btn" ng-click="upload($index)">{{screen.screenNum}}</button>
       </li>
     </ul>
   </div>

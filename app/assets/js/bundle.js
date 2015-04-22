@@ -140,7 +140,7 @@
 	    //gets the list of screens and their sockets
 	    $scope.getScreens = function () {
 	      io.post('/screen/getscreens', hardCodedRoom, function (response, body) {
-	        showScreenPicker();
+	        //showScreenPicker();
 	        $scope.screens = response.screens;
 	        $scope.$apply();
 	      });
