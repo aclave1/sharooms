@@ -101,6 +101,7 @@
 	    $scope.test = "chickens";
 	    $scope.showScreenPicker = false;
 	    $scope.currentFile = null;
+	    $scope.screenToEdit = null;
 	    $scope.clickMap = [];
 
 	    $scope.screens = [];
@@ -160,6 +161,10 @@
 
 	    $scope.chooseScreenToShow = function($index){
 
+	    };
+
+	    $scope.chooseScreenToEdit = function($index){
+	        $scope.screenToEdit = $scope.screens[$index];
 	    };
 
 	    $scope.imgWasClicked = function($index){

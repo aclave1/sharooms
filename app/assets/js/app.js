@@ -38,6 +38,7 @@ module.exports = angular
     $scope.test = "chickens";
     $scope.showScreenPicker = false;
     $scope.currentFile = null;
+    $scope.screenToEdit = null;
     $scope.clickMap = [];
 
     $scope.screens = [];
@@ -97,6 +98,10 @@ module.exports = angular
 
     $scope.chooseScreenToShow = function($index){
 
+    };
+
+    $scope.chooseScreenToEdit = function($index){
+        $scope.screenToEdit = $scope.screens[$index];
     };
 
     $scope.imgWasClicked = function($index){

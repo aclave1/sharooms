@@ -7,7 +7,7 @@
       <label class="action-label" for="action-screenpicker">Screen</label>
       <ul id="action-screenpicker" class="screenpicker">
         <li ng-repeat="screen in screens" class="screen">
-          <button class="btn btn-sm alert-warning screenpicker-btn" ng-click="chooseScreen($index)">{{screen.screenNum}}</button>
+          <button class="btn btn-sm alert-warning screenpicker-btn" ng-click="chooseScreenToEdit($index)">{{screen.screenNum}}</button>
         </li>
       </ul>
     </div>
@@ -54,19 +54,4 @@
       </li>
     </ul>
   </div>
-
-  <div>
-    <h2>Enter Text</h2>
-    <textarea class="form-control" rows="3"> > </textarea>
-
-  </div>
-  <div>
-    <h2>Resize</h2>
-    <button type="button" class="btn btn-primary btn-lg ">  +  </button>
-    <button type="button" class="btn btn-default btn-lg ">  -  </button>
-
-  </div>
-
-
-
 </div>
