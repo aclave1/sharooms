@@ -3,7 +3,10 @@
   <span class="alert alert-warning user_title pull-left">User: {{displayName}}</span>
 
   <div ng-if="displayImage" class="col-xs-12 screen_image_wrapper">
-    <img  ng-src="/download?fd={{imageUrl}}" class="screen_image" alt="Image to display"/>
+    <img  ng-src="/download?fd={{imageUrl}}"
+          ng-style="imgdim"
+          class="screen_image"
+          alt="Image to display"/>
   </div>
 
 

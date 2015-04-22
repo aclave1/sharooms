@@ -72,7 +72,14 @@ var ScreenController = (function () {
             res.status(200).json({ status: "success" });
         });
     };
+    ScreenController.prototype.resize = function (req, res) {
+        var params = req.params.all();
+        return SocketHandler.resize(params).then(function () {
+            res.status(200).json({ status: "success" });
+        });
+    };
     return ScreenController;
 })();
 var controller = new ScreenController();
 module.exports = controller;
+//# sourceMappingURL=ScreenController.js.map

@@ -12,3 +12,4 @@ var FileQuery = (function (_super) {
     return FileQuery;
 })(Sails.QueryResult);
 module.exports = FileQuery;
+//# sourceMappingURL=FileQuery.js.map
