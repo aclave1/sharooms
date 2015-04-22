@@ -99,6 +99,14 @@ var Sockets = (function () {
             res();
         });
     };
+    Sockets.prototype.resize = function (params) {
+        return new Promise(function (res, rej) {
+            var room = roomTable.socketsToRooms[params.screenId];
+            var screen = room.screens[params.screenId];
+            screen.socket.emit(eventstrings.screen.resize, { direction: params.direction });
+            res();
+        });
+    };
     return Sockets;
 })();
 var sockets = new Sockets();

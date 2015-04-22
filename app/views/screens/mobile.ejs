@@ -7,7 +7,7 @@
       <label class="action-label" for="action-screenpicker">Screen</label>
       <ul id="action-screenpicker" class="screenpicker">
         <li ng-repeat="screen in screens" class="screen">
-          <button class="btn btn-sm alert-warning screenpicker-btn" ng-click="chooseScreenToEdit($index)">{{screen.screenNum}}</button>
+          <button ng-class="{active:$index === editScreenIndex}" class="btn btn-sm alert-warning screenpicker-btn" ng-click="chooseScreenToEdit($index)">{{screen.screenNum}}</button>
         </li>
       </ul>
     </div>
@@ -16,8 +16,8 @@
 
       <label class="action-label" for="action-resizebtns">Resize:</label>
       <span id="action-resizebtns">
-        <button class="btn alert-warning">-</button>
-        <button class="btn alert-warning">+</button>
+        <button ng-click="resizeDown()" class="btn alert-warning">-</button>
+        <button ng-click="resizeUp()" class="btn alert-warning">+</button>
       </span>
 
     </div>

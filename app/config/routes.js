@@ -72,6 +72,10 @@ module.exports.routes = {
   'post /screen/show':{
     controller:'ScreenController',
     action:'showFile'
+  },
+  'post /screen/resize':{
+    controller:'ScreenController',
+    action:'resize'
   }
   /***************************************************************************
   *                                                                          *

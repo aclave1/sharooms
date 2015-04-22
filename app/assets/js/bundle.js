@@ -67,152 +67,194 @@
 
 
 	module.exports = angular
-	  .module('app', ['angularFileUpload'])
-	  .constant('events', __webpack_require__(6))
-	  .factory('io',
-	  utils.retFn(
-	    __webpack_require__(5)().socket//getting the sails.io function, invoking it, and returning the socket
-	  )
+	    .module('app', ['angularFileUpload'])
+	    .constant('events', __webpack_require__(6))
+	    .factory('io',
+	    utils.retFn(
+	        __webpack_require__(5)().socket//getting the sails.io function, invoking it, and returning the socket
+	    )
 	)
-	  .controller('MainController', ['$scope', 'io', 'events', function ($scope, io, events) {
-	    $scope.displayImage = false;
-	    $scope.imageUrl = "";
+	    .controller('MainController', ['$scope', 'io', 'events', function ($scope, io, events) {
+	        $scope.displayImage = false;
+	        $scope.imageUrl = "";
 
-	    io.post("/screen/register", hardCodedRoom, function (response, jwr) {
-	      setScreenNum(response);
-	    });
+	        $scope.imgdim = {
+	            "height": "100%",
+	            "width": "100%"
+	        };
 
-	    io.on(events.screen.display,function(event){
+	        io.post("/screen/register", hardCodedRoom, function (response, jwr) {
+	            setScreenNum(response);
+	        });
 
-	      var fd = event.fd;
-	      $scope.imageUrl = fd;
-	      $scope.displayImage = true;
-	      $scope.$apply();
+	        io.on(events.screen.display, function (event) {
 
-	    });
+	            var fd = event.fd;
+	            $scope.imageUrl = fd;
+	            $scope.displayImage = true;
+	            $scope.$apply();
 
-	    function setScreenNum(num) {
-	      $scope.screenNum = num.screenNum;
-	      $scope.$apply();
-	    }
+	        });
 
-	  }])
-	  .controller('MobileController',['$scope','io','$upload',function($scope,io,$upload){
-	    $scope.test = "chickens";
-	    $scope.showScreenPicker = false;
-	    $scope.currentFile = null;
-	    $scope.screenToEdit = null;
-	    $scope.clickMap = [];
+	        io.on(events.screen.resize, function (event) {
+	            console.dir(event);
 
-	    $scope.screens = [];
-	    $scope.roomFiles = [];
-	    $scope.files = [];
+	            var height = parseInt($scope.imgdim.height);
+	            var width = parseInt($scope.imgdim.width);
 
-	    function buildUploadUrl(screen) {
-	      return "/upload?" + ["screenId="+screen.screenId,"roomName="+hardCodedRoom.roomName].join("&")
-	    }
 
-	    $scope.upload = function ($index) {
-	      var screen = $scope.screens[$index];
+	            $scope.imgdim.height = (height + event.direction * 10) + "%";
+	            $scope.imgdim.width = (width + event.direction * 10) + "%";
+	            $scope.$apply();
 
-	      var url = buildUploadUrl(screen);
+	            console.log("w:" + width + "h:" + height);
+	        });
 
-	      var files = $scope.files;
-	      if (files.length > 0) {
-	        for (var i = 0; i < files.length; i++) {
-	          var file = files[i];
-	          $upload.upload({
-	            url: buildUploadUrl(screen),
-	            fields: {},
-	            fileFormDataName:'file',
-	            file: file
-	          }).progress(function (evt) {
-	            hideScreenPicker();
-	            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-	            console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
-	          }).success(function (data, status, headers, config) {
-	            console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
-	            getRoomFiles();
-	          });
+
+	        function setScreenNum(num) {
+	            $scope.screenNum = num.screenNum;
+	            $scope.$apply();
 	        }
-	      }
-	    };
-
-	    //gets the list of screens and their sockets
-	    $scope.getScreens = function () {
-	      io.post('/screen/getscreens', hardCodedRoom, function (response, body) {
-	        //showScreenPicker();
-	        $scope.screens = response.screens;
-	        $scope.$apply();
-	      });
-	    };
-	    //when a file is selected from the file picker
-	    $scope.fileSelected = function($files,$event){
-	      this.getScreens();
-	    };
-
-	    //when an image is clicked in the carousel
-	    $scope.imageClick = function($index){
-	      $scope.clickMap = [];
-	      $scope.clickMap[$index] = true;
-	      setCurrentImg($scope.roomFiles[$index]);
-
-	    };
-
-	    $scope.chooseScreenToShow = function($index){
-
-	    };
-
-	    $scope.chooseScreenToEdit = function($index){
-	        $scope.screenToEdit = $scope.screens[$index];
-	    };
-
-	    $scope.imgWasClicked = function($index){
-	     return $scope.clickMap[$index] === true;
-	    };
-
-
-	    function showScreenPicker(){
-	      $scope.showScreenPicker = true;
-	    }
-
-	    function hideScreenPicker(){
-	      $scope.showScreenPicker = false;
-	    }
-
-	    function getRoomFiles(){
-	      io.get('/screen/files?roomName='+hardCodedRoom.roomName,function(response,jwr){
-	        setRoomFiles(response.files);
-	      });
-	    }
-
-	    $scope.showOnScreen = function($index){
-	      var screen = $scope.screens[$index];
-
-	      var request = {
-	        fd:$scope.currentFile.fd,
-	        screenId:screen.screenId
-	      };
-	      io.post('/screen/show',request,function(response){
-
-	      });
-	    };
-
-	    //the last image that was clicked
-	    function setCurrentImg(file){
-	      $scope.currentFile = file;
-	    }
-	    function setRoomFiles(files){
-	      $scope.roomFiles = files;
-	      $scope.$apply();
-	    }
-	    $scope.getScreens();
-	    getRoomFiles();
 
 
 
-	  }])
+
+	    }])
+	    .controller('MobileController', ['$scope', 'io', '$upload', function ($scope, io, $upload) {
+	        $scope.test = "chickens";
+	        $scope.showScreenPicker = false;
+	        $scope.currentFile = null;
+	        $scope.screenToEdit = null;
+	        $scope.clickMap = [];
+
+	        $scope.screens = [];
+	        $scope.roomFiles = [];
+	        $scope.files = [];
+
+	        function buildUploadUrl(screen) {
+	            return "/upload?" + ["screenId=" + screen.screenId, "roomName=" + hardCodedRoom.roomName].join("&")
+	        }
+
+	        $scope.upload = function ($index) {
+	            var screen = $scope.screens[$index];
+
+	            var url = buildUploadUrl(screen);
+
+	            var files = $scope.files;
+	            if (files.length > 0) {
+	                for (var i = 0; i < files.length; i++) {
+	                    var file = files[i];
+	                    $upload.upload({
+	                        url: buildUploadUrl(screen),
+	                        fields: {},
+	                        fileFormDataName: 'file',
+	                        file: file
+	                    }).progress(function (evt) {
+	                        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+	                        console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+	                    }).success(function (data, status, headers, config) {
+	                        hideScreenPicker();
+	                        console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+	                        getRoomFiles();
+	                    });
+	                }
+	            }
+	        };
+
+	        //gets the list of screens and their sockets
+	        $scope.getScreens = function () {
+	            io.post('/screen/getscreens', hardCodedRoom, function (response, body) {
+	                showScreenPicker();
+	                $scope.screens = response.screens;
+	                $scope.$apply();
+	            });
+	        };
+	        //when a file is selected from the file picker
+	        $scope.fileSelected = function ($files, $event) {
+	            this.getScreens();
+	        };
+
+	        //when an image is clicked in the carousel
+	        $scope.imageClick = function ($index) {
+	            $scope.clickMap = [];
+	            $scope.clickMap[$index] = true;
+	            setCurrentImg($scope.roomFiles[$index]);
+
+	        };
+
+	        $scope.chooseScreenToShow = function ($index) {
+
+	        };
+
+	        $scope.chooseScreenToEdit = function ($index) {
+	            $scope.screenToEdit = $scope.screens[$index];
+	            $scope.editScreenIndex = $index;
+	        };
+
+	        $scope.imgWasClicked = function ($index) {
+	            return $scope.clickMap[$index] === true;
+	        };
+
+
+	        function showScreenPicker() {
+	            $scope.showScreenPicker = true;
+	        }
+
+	        function hideScreenPicker() {
+	            $scope.showScreenPicker = false;
+	        }
+
+	        function getRoomFiles() {
+	            io.get('/screen/files?roomName=' + hardCodedRoom.roomName, function (response, jwr) {
+	                setRoomFiles(response.files);
+	            });
+	        }
+
+	        $scope.showOnScreen = function ($index) {
+	            var screen = $scope.screens[$index];
+
+	            var request = {
+	                fd: $scope.currentFile.fd,
+	                screenId: screen.screenId
+	            };
+	            io.post('/screen/show', request, function (response) {
+
+	            });
+	        };
+
+	        $scope.resizeUp = function () {
+	            resizeScreen(1);
+	        };
+	        $scope.resizeDown = function () {
+	            resizeScreen(-1);
+	        };
+
+	        function resizeScreen(direction) {
+	            var req = {
+	                roomName: hardCodedRoom.roomName,
+	                direction: direction,
+	                screenId: $scope.screenToEdit.screenId
+	            };
+	            io.post('/screen/resize', req);
+	        }
+
+
+	        //the last image that was clicked
+	        function setCurrentImg(file) {
+	            $scope.currentFile = file;
+	        }
+
+	        function setRoomFiles(files) {
+	            $scope.roomFiles = files;
+	            $scope.$apply();
+	        }
+
+	        $scope.getScreens();
+	        getRoomFiles();
+
+	    }])
 	;
+
 
 
 /***/ },
@@ -5332,7 +5374,7 @@
 	var register = "REGISTER";
 	var unregister = "UNREGISTER";
 	var reassign = "REASSIGN";
-
+	var resize = "RESIZE";
 	var display = "DISPLAY";
 
 
@@ -5341,7 +5383,8 @@
 	    register:buildEvt(screen,register),
 	    unregister:buildEvt(screen,unregister),
 	    reassign:buildEvt(screen,reassign),
-	    display:buildEvt(screen,display)
+	    display:buildEvt(screen,display),
+	    resize:buildEvt(screen,resize)
 	  }
 	};
 

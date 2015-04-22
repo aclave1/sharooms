@@ -4,7 +4,7 @@ var screen = "SCREEN";
 var register = "REGISTER";
 var unregister = "UNREGISTER";
 var reassign = "REASSIGN";
-
+var resize = "RESIZE";
 var display = "DISPLAY";
 
 
@@ -13,7 +13,8 @@ module.exports = {
     register:buildEvt(screen,register),
     unregister:buildEvt(screen,unregister),
     reassign:buildEvt(screen,reassign),
-    display:buildEvt(screen,display)
+    display:buildEvt(screen,display),
+    resize:buildEvt(screen,resize)
   }
 };
 

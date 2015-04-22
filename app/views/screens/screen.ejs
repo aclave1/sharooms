@@ -1,7 +1,10 @@
 <div ng-controller="MainController" class="col-xs-12">
   <span class="alert alert-warning screen_number_title pull-right">Screen number:{{screenNum}}</span>
   <div ng-if="displayImage" class="col-xs-12 screen_image_wrapper">
-    <img  ng-src="/download?fd={{imageUrl}}" class="screen_image" alt="Image to display"/>
+    <img  ng-src="/download?fd={{imageUrl}}"
+          ng-style="imgdim"
+          class="screen_image"
+          alt="Image to display"/>
   </div>
 
 
