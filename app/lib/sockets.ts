@@ -151,7 +151,7 @@ class Sockets {
 
   displayFileOnScreen(params:FileParams) {
     return new Promise((res:any, rej:any)=> {
-      this.messageScreen(params.screenId, eventstrings.screen.display, {fd: params.fd,});
+      this.messageScreen(params.screenId, eventstrings.screen.display, {fd: params.fd,userName:params.userName});
       res();
 
     });

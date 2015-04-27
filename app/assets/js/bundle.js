@@ -73,6 +73,7 @@
 
 	    $scope.displayImage = false;
 	    $scope.imageUrl = "";
+	    $scope.displayUserName = "";
 
 	    $scope.imgdim = {
 	      "height": "100%",
@@ -88,6 +89,7 @@
 
 	    io.on(events.screen.display, function (event) {
 	      $scope.imageUrl = event.fd;
+	      $scope.displayUserName = event.userName;
 	      $scope.displayImage = true;
 	      $scope.$apply();
 	    });
@@ -122,6 +124,12 @@
 	          }
 
 	          existingCaption.text = captionData.text;
+	          existingCaption.updated = true;
+	          $scope.$apply();
+	          window.setTimeout(function(){
+	            existingCaption.updated = false;
+	            scope.$apply();
+	          },1000);
 	        } else {
 
 	          captionUserMap[captionData.userName] = captionData;

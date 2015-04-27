@@ -100,7 +100,7 @@ var Sockets = (function () {
     Sockets.prototype.displayFileOnScreen = function (params) {
         var _this = this;
         return new Promise(function (res, rej) {
-            _this.messageScreen(params.screenId, eventstrings.screen.display, { fd: params.fd });
+            _this.messageScreen(params.screenId, eventstrings.screen.display, { fd: params.fd, userName: params.userName });
             res();
         });
     };

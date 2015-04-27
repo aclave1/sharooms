@@ -1,3 +1,9 @@
+html,body,main{
+  height:100%;
+  min-height:100%;
+}
+
+
 div.center{
   margin-left: auto;
   margin-right: auto;
@@ -19,10 +25,10 @@ div.center{
 .screen_image{
   max-height: 80%;
   max-width: 100%;
+
 }
 .screen_image_wrapper{
   overflow: hidden;
-  height:100%;
   padding:0;
 }
 .screen_number_title{
@@ -47,5 +53,62 @@ div.center{
   opacity: 0.5;
 }
 
+.updated{
+  .success-highlight();
+}
+
+.caption_area{
+  height:50%;
+  min-height:800px;
+
+  overflow-x:hidden;
+  overflow-y:auto;
+  font-size:4em;
+  font-weight:bold;
+  position:absolute;
+  top:20%;
+  right:0;
+  background-color:#faebcc;
+  border-radius:10px;
+}
+.caption_area > h1{
+  color:#8a6d3b;
+  font-weight:bold;
+  font-size:0.8em;
+}
+.caption_entry{
+  color:darken(#8a6d3b,10%  );
+}
+
+/**vendor prefixes property and passes value
+  example:
+  .vendorprefix(animation, animationname 1s);
+  produces:
+  -webkit-animation: animationname 1s;
+  -moz-animation: animationname 1s;
+  .....
+*/
+.vendorprefix(@property, @value) {
+  -webkit-@{property}: @value;
+  -khtml-@{property}: @value;
+  -moz-@{property}: @value;
+  @{property}: @value;
+}
+@-moz-keyframes success-highlight {.success-highlight-mixin();}
+@-webkit-keyframes success-highlight {.success-highlight-mixin();}
+@keyframes success-highlight {.success-highlight-mixin();}
 
 
+
+.success-highlight-mixin(){
+  0% {
+    background-color: #F5D76E;
+  }
+  100% {
+    background-color: white;
+  }
+}
+
+.success-highlight {
+  .vendorprefix(animation,success-highlight 2s);
+}
