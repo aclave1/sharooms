@@ -3,12 +3,13 @@ declare module Express{
   export interface Request{
 
     params :{
-      all():Object;
+      all():any;
     }
 
   }
   export interface Response{
     view(route:string);
+    view(route:string,locals:any);
   }
   export interface Application{}
 }

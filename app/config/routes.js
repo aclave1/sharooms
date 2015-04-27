@@ -48,7 +48,7 @@ module.exports.routes = {
 
   'post /screen/register':{
     controller:'MainController',
-    action:'register'
+    action:'registerScreen'
   },
 
   'post /screen/getscreens':{
@@ -79,9 +79,13 @@ module.exports.routes = {
     action:'resize'
   },
 
-  "post /register":{
-    controller:"MainController",
-    action:"registerUser"
+  "post /register": {
+    controller: "MainController",
+    action: "registerUser"
+  },
+  'post /screen/caption':{
+    controller:'MainController',
+    action:'caption'
   }
   /***************************************************************************
   *                                                                          *

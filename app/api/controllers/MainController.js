@@ -9,21 +9,22 @@ var ScreenController = (function () {
     }
     ScreenController.prototype.screen = function (req, res) {
         var params = req.params.all();
-        return res.view("screens/screen");
+        var screenData = JSON.stringify({ roomname: params.roomname } || {});
+        return res.view("screens/screen", { screendata: screenData });
     };
     ScreenController.prototype.mobile = function (req, res) {
         var roomData = JSON.stringify(req.session.roomdata || {});
         return res.view("screens/mobile", { roomdata: roomData });
     };
-    ScreenController.prototype.register = function (req, res) {
+    ScreenController.prototype.registerScreen = function (req, res) {
         var params = req.params.all();
         SocketHandler.connect(req).then(function (screen) {
             return res.json({ "socket": "success", screenNum: screen.num });
         });
     };
     ScreenController.prototype.getScreens = function (req, res) {
-        var roomName = req.params.all().roomName;
-        return SocketHandler.getScreens(roomName).then(function (screens) {
+        var roomname = req.params.all().roomname;
+        return SocketHandler.getScreens(roomname).then(function (screens) {
             var screenResponse = screens.map(function (screen) {
                 return { screenNum: screen.num, screenId: screen.id };
             });
@@ -40,7 +41,7 @@ var ScreenController = (function () {
             }
             var file = files[0];
             return RoomFile.create({
-                roomName: params.roomName,
+                roomname: params.roomname,
                 fd: path.basename(file.fd)
             }).then(function (created) {
                 return SocketHandler.displayFileOnScreen(params.screenId, path.basename(created.fd));
@@ -60,8 +61,8 @@ var ScreenController = (function () {
         return fs.createReadStream(filePath).pipe(res);
     };
     ScreenController.prototype.getFilesForRoom = function (req, res) {
-        var roomName = req.params.all().roomName;
-        return RoomFile.find().where({ roomName: roomName }).then(function (found) {
+        var roomname = req.params.all().roomname;
+        return RoomFile.find().where({ roomname: roomname }).then(function (found) {
             return res.json({
                 files: found.reverse()
             });
@@ -69,7 +70,12 @@ var ScreenController = (function () {
     };
     ScreenController.prototype.showFile = function (req, res) {
         var params = req.params.all();
-        return SocketHandler.displayFileOnScreen(params.screenId, path.basename(params.fd)).then(function () {
+        var fileParams = {
+            screenId: params.screenId,
+            fd: path.basename(params.fd),
+            userName: params.userName
+        };
+        return SocketHandler.displayFileOnScreen(fileParams).then(function () {
             res.status(200).json({ status: "success" });
         });
     };
@@ -85,7 +91,14 @@ var ScreenController = (function () {
         req.session.roomdata = roomData;
         req.session.save(function () {
             var roomData = JSON.stringify(req.session.roomdata || {});
-            return res.view("screens/mobile", { roomdata: roomData });
+            //return res.view("screens/mobile", {roomdata: roomData});
+            return res.redirect('/mobile');
+        });
+    };
+    ScreenController.prototype.caption = function (req, res) {
+        var params = req.params.all();
+        return SocketHandler.caption(params).then(function () {
+            res.status(200).json({ status: "success" });
         });
     };
     return ScreenController;
@@ -94,11 +107,11 @@ function extractRoomData(params) {
     var campus = params.campus || "";
     var building = params.building || "";
     var room = params.room || "";
-    var displayName = params.displayname || "Unknown user";
-    var roomName = campus + building + room;
+    var userName = params.userName || "Unknown user";
+    var roomname = campus + building + room;
     return {
-        roomName: roomName,
-        displayName: displayName
+        roomname: roomname,
+        userName: userName
     };
 }
 var controller = new ScreenController();

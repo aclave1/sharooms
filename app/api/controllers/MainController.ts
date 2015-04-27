@@ -21,7 +21,9 @@ class ScreenController {
 
     screen(req:Express.Request, res:Express.Response):any {
         var params = req.params.all();
-        return res.view("screens/screen");
+        var screenData = JSON.stringify({roomname:params.roomname} || {});
+
+      return res.view("screens/screen",{screendata:screenData});
     }
 
 
@@ -33,7 +35,7 @@ class ScreenController {
     }
 
 
-    register(req, res) {
+    registerScreen(req, res) {
         var params = req.params.all();
         SocketHandler
             .connect(req)
@@ -43,9 +45,9 @@ class ScreenController {
     }
 
     getScreens(req:any, res:any) {
-        var roomName = req.params.all().roomName;
+        var roomname = req.params.all().roomname;
         return SocketHandler
-            .getScreens(roomName)
+            .getScreens(roomname)
             .then((screens)=> {
                 var screenResponse = screens.map((screen)=> {
                     return {screenNum: screen.num, screenId: screen.id};
@@ -70,7 +72,7 @@ class ScreenController {
             var file = files[0];
 
             return RoomFile.create({
-                roomName: params.roomName,
+                roomname: params.roomname,
                 fd: path.basename(file.fd)
             })
                 .then((created:FileQuery)=> {
@@ -102,10 +104,10 @@ class ScreenController {
     }
 
     getFilesForRoom(req:any, res:any) {
-        var roomName = req.params.all().roomName;
+        var roomname = req.params.all().roomname;
         return RoomFile
             .find()
-            .where({roomName: roomName})
+            .where({roomname: roomname})
             .then((found:Array<FileQuery>)=> {
                 return res.json({
                     files: found.reverse()
@@ -117,8 +119,15 @@ class ScreenController {
 
     showFile(req:any, res:any) {
         var params = req.params.all();
+
+        var fileParams = {
+          screenId:params.screenId,
+          fd:path.basename(params.fd),
+          userName:params.userName
+        };
+
         return SocketHandler
-            .displayFileOnScreen(params.screenId, path.basename(params.fd))
+            .displayFileOnScreen(fileParams)
             .then(()=> {
                 res.status(200).json({status: "success"});
             });
@@ -134,18 +143,29 @@ class ScreenController {
     }
 
     registerUser(req:any, res:any) {
+      var params = req.params.all();
+
+      var roomData = extractRoomData(params);
+      req.session.roomdata = roomData;
+      req.session.save(function () {
+
+        var roomData = JSON.stringify(req.session.roomdata || {});
+
+        //return res.view("screens/mobile", {roomdata: roomData});
+
+        return res.redirect('/mobile');
+
+
+      });
+    }
+
+    caption(req:any,res:any){
         var params = req.params.all();
-
-        var roomData = extractRoomData(params);
-        req.session.roomdata = roomData;
-        req.session.save(function(){
-
-            var roomData = JSON.stringify(req.session.roomdata || {});
-
-            return res.view("screens/mobile", {roomdata: roomData});
-
-        });
-
+        return SocketHandler
+            .caption(params)
+            .then(()=>{
+                res.status(200).json({status: "success"});
+            });
     }
 }
 
@@ -154,13 +174,13 @@ function extractRoomData(params) {
     var campus = params.campus || "";
     var building = params.building || "";
     var room = params.room || "";
-    var displayName = params.displayname || "Unknown user";
+    var userName = params.userName || "Unknown user";
 
-    var roomName = campus + building + room;
+    var roomname = campus + building + room;
 
     return {
-        roomName: roomName,
-        displayName: displayName
+        roomname: roomname,
+        userName: userName
     };
 
 

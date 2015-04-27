@@ -1,5 +1,11 @@
-<div ng-controller="MainController" class="col-xs-12">
+<script>
+  window.__SCREENDATA = <%- screendata%>;
+</script>
+
+<div ng-controller="MainController" class="col-xs-12 contain_height">
   <span class="alert alert-warning screen_number_title pull-right">Screen number:{{screenNum}}</span>
+  <span class="alert alert-warning user_title pull-left">User: {{displayName}}</span>
+
   <div ng-if="displayImage" class="col-xs-12 screen_image_wrapper">
     <img  ng-src="/download?fd={{imageUrl}}"
           ng-style="imgdim"
@@ -10,7 +16,9 @@
 
 
 
-
+    <div class="caption_area">
+        <div  ng-repeat="caption in captions">{{caption.userName}}: {{caption.text}}</div>
+    </div>
 
   <!--<img class="imagePlaceHolder" src="/app/assets/images/placeholder.jpg" width="" height= "" alt="" >-->
 </div>
