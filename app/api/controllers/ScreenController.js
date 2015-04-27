@@ -78,6 +78,12 @@ var ScreenController = (function () {
             res.status(200).json({ status: "success" });
         });
     };
+    ScreenController.prototype.caption = function (req, res) {
+        var params = req.params.all();
+        return SocketHandler.caption(params).then(function () {
+            res.status(200).json({ status: "success" });
+        });
+    };
     return ScreenController;
 })();
 var controller = new ScreenController();

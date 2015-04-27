@@ -1,4 +1,10 @@
 ///<reference path="../typings/tsd.d.ts"/>
+var __extends = this.__extends || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
 var Promise = require('bluebird');
 var eventstrings = require('./iso/eventstrings');
 var RoomTable = (function () {
@@ -107,8 +113,43 @@ var Sockets = (function () {
             res();
         });
     };
+    Sockets.prototype.caption = function (params) {
+        var _this = this;
+        return new Promise(function (res, rej) {
+            _this.messageScreen(params.screenId, eventstrings.screen.caption, { text: params.text });
+            res();
+        });
+    };
+    Sockets.prototype.getScreen = function (screenId) {
+        var room = roomTable.socketsToRooms[screenId];
+        var screen = room.screens[screenId];
+        return screen;
+    };
+    Sockets.prototype.messageScreen = function (screenId, event, data) {
+        var screen = this.getScreen(screenId);
+        screen.socket.emit(event, data);
+    };
     return Sockets;
 })();
 var sockets = new Sockets();
+var RoomParams = (function () {
+    function RoomParams() {
+    }
+    return RoomParams;
+})();
+var ResizeParams = (function (_super) {
+    __extends(ResizeParams, _super);
+    function ResizeParams() {
+        _super.apply(this, arguments);
+    }
+    return ResizeParams;
+})(RoomParams);
+var CaptionParams = (function (_super) {
+    __extends(CaptionParams, _super);
+    function CaptionParams() {
+        _super.apply(this, arguments);
+    }
+    return CaptionParams;
+})(RoomParams);
 module.exports = sockets;
 //# sourceMappingURL=sockets.js.map

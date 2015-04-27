@@ -77,6 +77,7 @@
 	    .controller('MainController', ['$scope', 'io', 'events', function ($scope, io, events) {
 	        $scope.displayImage = false;
 	        $scope.imageUrl = "";
+	        $scope.caption = "";
 
 	        $scope.imgdim = {
 	            "height": "100%",
@@ -110,13 +111,16 @@
 	            console.log("w:" + width + "h:" + height);
 	        });
 
+	        io.on(events.screen.caption, function (event) {
+	            $scope.caption = event.text;
+	            $scope.$apply();
+	        });
+
 
 	        function setScreenNum(num) {
 	            $scope.screenNum = num.screenNum;
 	            $scope.$apply();
 	        }
-
-
 
 
 	    }])
@@ -130,6 +134,7 @@
 	        $scope.screens = [];
 	        $scope.roomFiles = [];
 	        $scope.files = [];
+
 
 	        function buildUploadUrl(screen) {
 	            return "/upload?" + ["screenId=" + screen.screenId, "roomName=" + hardCodedRoom.roomName].join("&")
@@ -221,6 +226,22 @@
 
 	            });
 	        };
+
+	        $scope.$watch(function () {
+	            return $scope.screenCaption;
+	        }, function (changes) {
+	            if(!$scope.screenToEdit)return;
+	            console.log(changes);
+	            var request = {
+	                text: changes,
+	                roomName: hardCodedRoom.roomName,
+	                screenId: $scope.screenToEdit.screenId
+	            };
+	            io.post('/screen/caption', request, function (response) {
+
+	            });
+
+	        });
 
 	        $scope.resizeUp = function () {
 	            resizeScreen(1);
@@ -5376,6 +5397,7 @@
 	var reassign = "REASSIGN";
 	var resize = "RESIZE";
 	var display = "DISPLAY";
+	var caption = "CAPTION";
 
 
 	module.exports = {
@@ -5384,7 +5406,8 @@
 	    unregister:buildEvt(screen,unregister),
 	    reassign:buildEvt(screen,reassign),
 	    display:buildEvt(screen,display),
-	    resize:buildEvt(screen,resize)
+	    resize:buildEvt(screen,resize),
+	    caption:buildEvt(screen,caption)
 	  }
 	};
 

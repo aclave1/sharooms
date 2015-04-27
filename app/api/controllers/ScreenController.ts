@@ -128,6 +128,15 @@ class ScreenController {
                 res.status(200).json({status: "success"});
             });
     }
+
+    caption(req:any,res:any){
+        var params = req.params.all();
+        return SocketHandler
+            .caption(params)
+            .then(()=>{
+                res.status(200).json({status: "success"});
+            });
+    }
 }
 
 

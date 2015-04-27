@@ -14,6 +14,7 @@ module.exports = angular
     .controller('MainController', ['$scope', 'io', 'events', function ($scope, io, events) {
         $scope.displayImage = false;
         $scope.imageUrl = "";
+        $scope.caption = "";
 
         $scope.imgdim = {
             "height": "100%",
@@ -47,13 +48,16 @@ module.exports = angular
             console.log("w:" + width + "h:" + height);
         });
 
+        io.on(events.screen.caption, function (event) {
+            $scope.caption = event.text;
+            $scope.$apply();
+        });
+
 
         function setScreenNum(num) {
             $scope.screenNum = num.screenNum;
             $scope.$apply();
         }
-
-
 
 
     }])
@@ -67,6 +71,7 @@ module.exports = angular
         $scope.screens = [];
         $scope.roomFiles = [];
         $scope.files = [];
+
 
         function buildUploadUrl(screen) {
             return "/upload?" + ["screenId=" + screen.screenId, "roomName=" + hardCodedRoom.roomName].join("&")
@@ -158,6 +163,22 @@ module.exports = angular
 
             });
         };
+
+        $scope.$watch(function () {
+            return $scope.screenCaption;
+        }, function (changes) {
+            if(!$scope.screenToEdit)return;
+            console.log(changes);
+            var request = {
+                text: changes,
+                roomName: hardCodedRoom.roomName,
+                screenId: $scope.screenToEdit.screenId
+            };
+            io.post('/screen/caption', request, function (response) {
+
+            });
+
+        });
 
         $scope.resizeUp = function () {
             resizeScreen(1);

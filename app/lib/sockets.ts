@@ -162,7 +162,7 @@ class Sockets {
     }
 
 
-    resize(params:resizeParams) {
+    resize(params:ResizeParams) {
         return new Promise((res:any, rej:any)=> {
             var room:Room = roomTable.socketsToRooms[params.screenId];
             var screen = room.screens[params.screenId];
@@ -170,17 +170,40 @@ class Sockets {
             res();
         });
     }
+    caption(params:CaptionParams){
+        return new Promise((res:any,rej:any)=>{
+            this.messageScreen(params.screenId,eventstrings.screen.caption,{text:params.text});
+            res();
+        });
+    }
 
+
+    getScreen(screenId:string):ScreenEntry{
+        var room:Room = roomTable.socketsToRooms[screenId];
+        var screen = room.screens[screenId];
+        return screen;
+    }
+
+    messageScreen(screenId:string,event:string,data:any){
+        var screen:ScreenEntry = this.getScreen(screenId);
+        screen.socket.emit(event,data);
+    }
 }
+
+
 
 var sockets = new Sockets();
 
 export = sockets;
 
-
-declare class resizeParams {
+class RoomParams{
     roomName:string;
-    direction:number;
     screenId:string;
-}
 
+}
+class ResizeParams extends RoomParams{
+    direction:number;
+}
+class CaptionParams extends RoomParams{
+    text:string;
+}
