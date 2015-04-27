@@ -17,7 +17,7 @@ module.exports = {
             "angular": "vendor/angular/angular.min.js",
             //"jquery": "vendor/jquery/dist/jquery.min.js",
             "socketio": "vendor/socket.io-client/index.js",
-            //"router": "vendor/angular-ui-router/release/angular-ui-router.min.js",
+            "router": "vendor/angular-ui-router/release/angular-ui-router.min.js",
             //"jqueryui": "vendor/jquery-ui/ui/minified/jquery-ui.min.js",
             //"angular-bootstrap": "vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"
             "ngfile": "vendor/ng-file-upload/angular-file-upload-all.min.js"

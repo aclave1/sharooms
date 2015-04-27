@@ -12,7 +12,8 @@ var ScreenController = (function () {
         return res.view("screens/screen");
     };
     ScreenController.prototype.mobile = function (req, res) {
-        return res.view("screens/mobile");
+        var roomData = JSON.stringify(req.session.roomdata || {});
+        return res.view("screens/mobile", { roomdata: roomData });
     };
     ScreenController.prototype.register = function (req, res) {
         var params = req.params.all();
@@ -78,8 +79,28 @@ var ScreenController = (function () {
             res.status(200).json({ status: "success" });
         });
     };
+    ScreenController.prototype.registerUser = function (req, res) {
+        var params = req.params.all();
+        var roomData = extractRoomData(params);
+        req.session.roomdata = roomData;
+        req.session.save(function () {
+            var roomData = JSON.stringify(req.session.roomdata || {});
+            return res.view("screens/mobile", { roomdata: roomData });
+        });
+    };
     return ScreenController;
 })();
+function extractRoomData(params) {
+    var campus = params.campus || "";
+    var building = params.building || "";
+    var room = params.room || "";
+    var displayName = params.displayname || "Unknown user";
+    var roomName = campus + building + room;
+    return {
+        roomName: roomName,
+        displayName: displayName
+    };
+}
 var controller = new ScreenController();
 module.exports = controller;
-//# sourceMappingURL=ScreenController.js.map
+//# sourceMappingURL=MainController.js.map

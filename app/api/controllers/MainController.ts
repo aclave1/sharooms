@@ -15,6 +15,7 @@ import FileQuery = require('../types/FileQuery');
 
 declare var RoomFile:Sails.Model;
 
+
 class ScreenController {
 
 
@@ -25,7 +26,10 @@ class ScreenController {
 
 
     mobile(req:any, res:any) {
-        return res.view("screens/mobile");
+
+        var roomData = JSON.stringify(req.session.roomdata || {});
+
+        return res.view("screens/mobile", {roomdata: roomData});
     }
 
 
@@ -128,8 +132,39 @@ class ScreenController {
                 res.status(200).json({status: "success"});
             });
     }
+
+    registerUser(req:any, res:any) {
+        var params = req.params.all();
+
+        var roomData = extractRoomData(params);
+        req.session.roomdata = roomData;
+        req.session.save(function(){
+
+            var roomData = JSON.stringify(req.session.roomdata || {});
+
+            return res.view("screens/mobile", {roomdata: roomData});
+
+        });
+
+    }
 }
 
+
+function extractRoomData(params) {
+    var campus = params.campus || "";
+    var building = params.building || "";
+    var room = params.room || "";
+    var displayName = params.displayname || "Unknown user";
+
+    var roomName = campus + building + room;
+
+    return {
+        roomName: roomName,
+        displayName: displayName
+    };
+
+
+}
 
 var controller = new ScreenController();
 

@@ -47,7 +47,6 @@
 	
 	__webpack_require__(2);
 	__webpack_require__(3);
-
 	__webpack_require__(1);
 
 	angular
@@ -63,17 +62,19 @@
 
 	var utils = __webpack_require__(4);
 
-	var hardCodedRoom = {roomName: "mainroom"};
+
+
+
+	var hardCodedRoom = {
+	    roomName: "mainroom"
+	};
 
 
 	module.exports = angular
 	    .module('app', ['angularFileUpload'])
 	    .constant('events', __webpack_require__(6))
-	    .factory('io',
-	    utils.retFn(
-	        __webpack_require__(5)().socket//getting the sails.io function, invoking it, and returning the socket
-	    )
-	)
+	    //getting the sails.io function, invoking it, and returning the socket
+	    .factory('io', utils.retFn(__webpack_require__(5)().socket))
 	    .controller('MainController', ['$scope', 'io', 'events', function ($scope, io, events) {
 	        $scope.displayImage = false;
 	        $scope.imageUrl = "";
@@ -117,10 +118,9 @@
 	        }
 
 
-
-
 	    }])
 	    .controller('MobileController', ['$scope', 'io', '$upload', function ($scope, io, $upload) {
+
 	        $scope.test = "chickens";
 	        $scope.showScreenPicker = false;
 	        $scope.currentFile = null;

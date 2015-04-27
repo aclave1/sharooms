@@ -33,49 +33,55 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view: 'homepage'
+    view: 'screens/register'
   },
+
   '/screen':{
-    controller:'ScreenController',
+    controller:'MainController',
     action:'screen'
   },
 
   '/mobile':{
-    controller:'ScreenController',
+    controller:'MainController',
     action:'mobile'
   },
 
   'post /screen/register':{
-    controller:'ScreenController',
+    controller:'MainController',
     action:'register'
   },
 
   'post /screen/getscreens':{
-    controller:'ScreenController',
+    controller:'MainController',
     action:'getScreens'
   },
 
   'post /upload': {
-    controller: 'ScreenController',
+    controller: 'MainController',
     action: 'upload'
   },
 
   'get /download':{
-    controller: 'ScreenController',
+    controller: 'MainController',
     action: 'download'
   },
 
   'get /screen/files':{
-    controller:'ScreenController',
+    controller:'MainController',
     action:'getFilesForRoom'
   },
   'post /screen/show':{
-    controller:'ScreenController',
+    controller:'MainController',
     action:'showFile'
   },
   'post /screen/resize':{
-    controller:'ScreenController',
+    controller:'MainController',
     action:'resize'
+  },
+
+  "post /register":{
+    controller:"MainController",
+    action:"registerUser"
   }
   /***************************************************************************
   *                                                                          *

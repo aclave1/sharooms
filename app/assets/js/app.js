@@ -1,16 +1,18 @@
 var utils = require('./lib/utils');
 
-var hardCodedRoom = {roomName: "mainroom"};
+
+
+
+var hardCodedRoom = {
+    roomName: "mainroom"
+};
 
 
 module.exports = angular
     .module('app', ['angularFileUpload'])
     .constant('events', require('eventstrings'))
-    .factory('io',
-    utils.retFn(
-        require('./dependencies/sails.io')().socket//getting the sails.io function, invoking it, and returning the socket
-    )
-)
+    //getting the sails.io function, invoking it, and returning the socket
+    .factory('io', utils.retFn(require('./dependencies/sails.io')().socket))
     .controller('MainController', ['$scope', 'io', 'events', function ($scope, io, events) {
         $scope.displayImage = false;
         $scope.imageUrl = "";
@@ -54,10 +56,9 @@ module.exports = angular
         }
 
 
-
-
     }])
     .controller('MobileController', ['$scope', 'io', '$upload', function ($scope, io, $upload) {
+
         $scope.test = "chickens";
         $scope.showScreenPicker = false;
         $scope.currentFile = null;

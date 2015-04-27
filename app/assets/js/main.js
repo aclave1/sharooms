@@ -1,7 +1,6 @@
 
 require('angular');
 require('ngfile');
-
 require('./app');
 
 angular
