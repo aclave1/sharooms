@@ -4,6 +4,7 @@ var path = require('path');
 var fs = require('fs');
 var mime = require('mime');
 var SocketHandler = require(__appdir + "/lib/sockets");
+var eventStrings = require(__appdir + '/lib/iso/eventstrings');
 var ScreenController = (function () {
     function ScreenController() {
     }
@@ -44,7 +45,12 @@ var ScreenController = (function () {
                 roomname: params.roomname,
                 fd: path.basename(file.fd)
             }).then(function (created) {
-                return SocketHandler.displayFileOnScreen(params.screenId, path.basename(created.fd));
+                var fileParams = {
+                    screenId: params.screenId,
+                    fd: path.basename(file.fd),
+                    userName: params.userName
+                };
+                return SocketHandler.displayFileOnScreen(fileParams);
             }).then(function (status) {
                 return res.status(200).json({ status: status });
             });
@@ -87,8 +93,7 @@ var ScreenController = (function () {
     };
     ScreenController.prototype.registerUser = function (req, res) {
         var params = req.params.all();
-        var roomData = extractRoomData(params);
-        req.session.roomdata = roomData;
+        req.session.roomdata = extractRoomData(params);
         req.session.save(function () {
             var roomData = JSON.stringify(req.session.roomdata || {});
             //return res.view("screens/mobile", {roomdata: roomData});
@@ -100,6 +105,9 @@ var ScreenController = (function () {
         return SocketHandler.caption(params).then(function () {
             res.status(200).json({ status: "success" });
         });
+    };
+    ScreenController.prototype.getCoreOscMessages = function (req, res) {
+        return res.json(eventStrings.screen);
     };
     return ScreenController;
 })();

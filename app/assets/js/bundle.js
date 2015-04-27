@@ -87,6 +87,11 @@
 	      setScreenNum(response);
 	    });
 
+	    /**
+	     * ************************************************************************
+	     * Events
+	     * ************************************************************************
+	     * */
 	    io.on(events.screen.display, function (event) {
 	      $scope.imageUrl = event.fd;
 	      $scope.displayUserName = event.userName;
@@ -107,7 +112,11 @@
 	      captionApi.setCaption(event);
 	      $scope.$apply();
 	    });
-
+	    /**
+	     * ************************************************************************
+	     * end Events
+	     * ************************************************************************
+	     * */
 
 	    function buildCaptionApi(scope) {
 
@@ -166,12 +175,13 @@
 	    $scope.test = "chickens";
 	    $scope.showScreenPicker = false;
 	    $scope.currentFile = null;
-	    $scope.screenToEdit = null;
+	    $scope.screenToEdit = 0;
 	    $scope.clickMap = [];
 
 	    $scope.screens = [];
 	    $scope.roomFiles = [];
 	    $scope.files = [];
+	    $scope.currentFileOnScreenIndex = -1;
 
 
 	    $scope.upload = function ($index) {
@@ -191,6 +201,8 @@
 	          }).success(function (data, status, headers, config) {
 	            hideScreenPicker();
 	            getRoomFiles();
+	            //the current file being shown is the top of the stack
+	            $scope.currentFileOnScreenIndex = 0;
 	          });
 	        }
 	      }
@@ -213,6 +225,9 @@
 	    $scope.imageClick = function ($index) {
 	      $scope.clickMap = [];
 	      $scope.clickMap[$index] = true;
+
+	      $scope.lastClickedImage = $index;
+
 	      setCurrentImg($scope.roomFiles[$index]);
 
 	    };
@@ -230,6 +245,8 @@
 
 	    $scope.showOnScreen = function ($index) {
 	      var screen = $scope.screens[$index];
+
+	      $scope.currentFileOnScreenIndex = $scope.lastClickedImage;
 
 	      var request = {
 	        fd: $scope.currentFile.fd,
@@ -264,6 +281,40 @@
 	    $scope.resizeDown = function () {
 	      resizeScreen(-1);
 	    };
+
+
+
+	    $scope.nextPic = function(){
+	      if($scope.currentFileOnScreenIndex === 0){
+	        return;
+	      }
+
+
+	      prevNext($scope.editScreenIndex,--$scope.currentFileOnScreenIndex);
+	    };
+
+	    $scope.prevPic = function(){
+	      if($scope.currentFileOnScreenIndex === $scope.roomFiles.length-1){
+	        return;
+	      }
+
+	      prevNext($scope.editScreenIndex,++$scope.currentFileOnScreenIndex);
+	    };
+
+	    function prevNext(screenIndex,fileIndex){
+	      var screen = $scope.screens[screenIndex];
+
+	      var request = {
+	        fd: $scope.roomFiles[fileIndex].fd,
+	        screenId: screen.screenId,
+	        userName: getUserName()
+	      };
+	      io.post('/screen/show', request, function (response) {
+
+	      });
+	    }
+
+
 	    function resizeScreen(direction) {
 	      var req = {
 	        roomname: getRoomName(),
@@ -273,6 +324,8 @@
 	      };
 	      io.post('/screen/resize', req);
 	    }
+
+
 
 	    //the last image that was clicked
 	    function setCurrentImg(file) {
@@ -5440,15 +5493,16 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	var screen = "SCREEN";
+	var screen = "CORE";
 
 	var register = "REGISTER";
 	var unregister = "UNREGISTER";
 	var reassign = "REASSIGN";
 	var resize = "RESIZE";
-	var display = "DISPLAY";
+	var display = "SHOW";
 	var caption = "CAPTION";
-
+	var next = "NEXT";
+	var prev = "PREV";
 
 	module.exports = {
 	  screen:{
@@ -5457,13 +5511,15 @@
 	    reassign:buildEvt(screen,reassign),
 	    display:buildEvt(screen,display),
 	    resize:buildEvt(screen,resize),
-	    caption:buildEvt(screen,caption)
+	    caption:buildEvt(screen,caption),
+	    next:buildEvt(screen,next),
+	    prev:buildEvt(screen,prev)
 	  }
 	};
 
 
 	function buildEvt(prefix,suffix){
-	  return [prefix,suffix].join(":");
+	  return [prefix,suffix].join("/");
 	}
 
 

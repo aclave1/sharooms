@@ -15,6 +15,7 @@ import FileQuery = require('../types/FileQuery');
 
 declare var RoomFile:Sails.Model;
 
+var eventStrings = require(__appdir + '/lib/iso/eventstrings');
 
 class ScreenController {
 
@@ -76,8 +77,16 @@ class ScreenController {
                 fd: path.basename(file.fd)
             })
                 .then((created:FileQuery)=> {
+
+                  var fileParams = {
+                    screenId:params.screenId,
+                    fd:path.basename(file.fd),
+                    userName:params.userName
+                  };
+
+
                     return SocketHandler
-                        .displayFileOnScreen(params.screenId, path.basename(created.fd));
+                        .displayFileOnScreen(fileParams);
                 })
                 .then((status:any)=> {
                     return res.status(200).json({status: status});
@@ -145,8 +154,7 @@ class ScreenController {
     registerUser(req:any, res:any) {
       var params = req.params.all();
 
-      var roomData = extractRoomData(params);
-      req.session.roomdata = roomData;
+      req.session.roomdata = extractRoomData(params);
       req.session.save(function () {
 
         var roomData = JSON.stringify(req.session.roomdata || {});
@@ -166,6 +174,10 @@ class ScreenController {
             .then(()=>{
                 res.status(200).json({status: "success"});
             });
+    }
+
+    getCoreOscMessages(req:any,res:any){
+      return res.json(eventStrings.screen);
     }
 }
 

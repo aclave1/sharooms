@@ -1,13 +1,14 @@
 
-var screen = "SCREEN";
+var screen = "CORE";
 
 var register = "REGISTER";
 var unregister = "UNREGISTER";
 var reassign = "REASSIGN";
 var resize = "RESIZE";
-var display = "DISPLAY";
+var display = "SHOW";
 var caption = "CAPTION";
-
+var next = "NEXT";
+var prev = "PREV";
 
 module.exports = {
   screen:{
@@ -16,11 +17,13 @@ module.exports = {
     reassign:buildEvt(screen,reassign),
     display:buildEvt(screen,display),
     resize:buildEvt(screen,resize),
-    caption:buildEvt(screen,caption)
+    caption:buildEvt(screen,caption),
+    next:buildEvt(screen,next),
+    prev:buildEvt(screen,prev)
   }
 };
 
 
 function buildEvt(prefix,suffix){
-  return [prefix,suffix].join(":");
+  return [prefix,suffix].join("/");
 }

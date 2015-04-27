@@ -6,7 +6,7 @@
 <div ng-controller="MobileController" class="mobile_wrapper">
   <h1>Sharooms Mobile</h1>
 
-  <div class="actionsection">
+  <div id="editscreen" class="actionsection">
     <div class="form-group">
       <label class="action-label" for="action-screenpicker">Screen</label>
       <ul id="action-screenpicker" class="screenpicker">
@@ -16,35 +16,51 @@
       </ul>
     </div>
 
-    <div class="resize-btns form-group">
+    <div class="action-btns form-group">
 
       <label class="action-label" for="action-resizebtns">Resize:</label>
+
       <span id="action-resizebtns">
         <button ng-click="resizeDown()" class="btn alert-warning">-</button>
         <button ng-click="resizeUp()" class="btn alert-warning">+</button>
       </span>
 
     </div>
+
+    <div class="action-btns form-group">
+      <label for="action-nextprevbtns" class="action-label">Next/Previous Picture</label>
+
+      <span id="action-nextprevbtns">
+        <button ng-click="prevPic()" class="btn alert-warning"><<</button>
+        <button ng-click="nextPic()" class="btn alert-warning">>></button>
+      </span>
+    </div>
+
     <div>
       <label class="action-label" for="screen-caption">Caption</label>
       <textarea class="form-control" id="screen-caption" type="text" ng-model="screenCaption"/>
       </textarea>
     </div>
   </div>
+  <div>
 
-  <button class="btn btn-sm alert-warning" ng-file-select ng-model="files" ng-file-change="fileSelected($files, $event)">Upload file</button>
-
-
-  <div ng-if="showScreenPicker">
-    <span class="yellow_font">Choose a screen:</span>
-    <ul class="screenpicker">
-      <li ng-repeat="screen in screens" class="screen">
-        <button class="btn btn-sm alert-warning screenpicker-btn" ng-click="upload($index)">{{screen.screenNum}}</button>
-      </li>
-    </ul>
   </div>
 
-  <div>
+  <div class="actionsection">
+    <button class="btn btn-sm alert-warning upload-btn" ng-file-select ng-model="files" ng-file-change="fileSelected($files, $event)">Upload file</button>
+
+
+    <div ng-if="showScreenPicker">
+      <span class="yellow_font">Choose a screen:</span>
+      <ul class="screenpicker">
+        <li ng-repeat="screen in screens" class="screen">
+          <button class="btn btn-sm alert-warning screenpicker-btn" ng-click="upload($index)">{{screen.screenNum}}</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="actionsection">
     <ul class="pic_list">
       <li ng-repeat="file in roomFiles" style="display:inline;position:relative;" style="height:100%;">
         <div class="room-img-wrapper">

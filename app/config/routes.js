@@ -86,7 +86,12 @@ module.exports.routes = {
   'post /screen/caption':{
     controller:'MainController',
     action:'caption'
-  }
+  },
+
+  'get /osc':{
+    controller:'MainController',
+    action:'getCoreOscMessages'
+  },
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
