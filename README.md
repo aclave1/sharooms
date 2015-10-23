@@ -7,9 +7,9 @@ This was a project for LSU CSC 4243: Interface design. The assignment was to imp
 
 # Usage:
 
-The screens each visit <serverip>:1337/screen to register with the app. The user then visits <serverip>:1337/mobile to view the mobile interface. The user can then either 
+The screens each visit serverip:1337/screen to register with the app. The user then visits serverip:1337/mobile to view the mobile interface. The user can then either 
 
-* A. Upload an image to the server, and choose which screen to display it on 
+* A. Upload an image to the server and choose which screen to display it on 
 * B. Choose an existing image and choose which screen to display it on.
 
 # Architecture: 
